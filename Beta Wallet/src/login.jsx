@@ -21,7 +21,7 @@ if(!isOpen) return null;
                         
                         
                        <form className="space-y-4 flex flex-col w-full">
-                        <div className="w-full">
+                        <div>
                             <label htmlFor="password" className="block text-md font-medium uppercase text-orange-600 my-2">Username</label>
                             <input type="text" required id="username" className="py-1 px-2 w-full rounded-2xl max-w-xl"/>
                         </div>

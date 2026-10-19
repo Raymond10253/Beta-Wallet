@@ -1,102 +1,103 @@
 import { useState } from 'react'
 
+import Overview from './Overview';
+import Profile from './profile';
+import Deposit from './deposit';
+import Withdraw from './Withdraw';
+import Transfer from './Transfer';
+import Setting from './Setting';
+import Contact from './Contact';
+
+
 function NavBar() {
-    const [isContactopen, setIsContactopen] = useState(false);
+const [activeTab, setActiveTab] = useState('dashboard')
+const renderContent = () => {
+    switch (activeTab) {
+    case 'dashboard':
+        return <Overview />;
+    case 'profile':
+        return <Profile />;
+    case 'deposit':
+        return <Deposit />;
+    case 'withdraw':
+        return <Withdraw />;
+    case 'transfer':
+        return <Transfer />;
+    case 'setting':
+        return <Setting />;
+    case 'contact':
+        return <Contact />;
+    default:
+        return <Overview />;
+} 
+}
+
 
     return (
     <>
     <div className='flex'>
-        <div className='relative bg-blue-950 left-0 h-full w-[200px] pt-16 pl-2 pr-2 border-r-2 border-black z-50'>
+        <aside className='relative w-[200px] bg-slate-900 border-r-2 border-orange-600 pt-16 flex flex-col justify-between z-50 inset-0 px-2'>
             <div className='space-y-10'>
                 <div>
-                    <a href="#dashboard" className='rounded-2xl border border-transparent hover:border-black hover:bg-blue-950 w-full flex space-x-3 px-2 py-1'>
-                        <i className='fa-solid fa-chart-line text-lg'></i>
-                        <span>Dashboard</span>
+                    <a href="#dashboard" onClick={() => setActiveTab('dashboard')} className='border border-b border-transparent hover:border-b-orange-500/40 w-full flex space-x-3 px-2 py-1'>
+                        <i className='fa-solid fa-chart-line text-lg text-orange-500'></i>
+                        <span className='text-orange-500/60'>Dashboard</span>
                     </a>
                     
                 </div>
                 <div>
-                    <a href="#profile" className='rounded-2xl border border-transparent hover:border-black hover:bg-blue-950 w-full flex space-x-3 px-2 py-1'>
-                        <i className='fa-solid fa-circle-user text-lg'></i>
-                        <span>Profile</span>
+                    <a href="#profile" onClick={() => setActiveTab('profile')} className='border border-b border-transparent hover:border-b-orange-500/40 w-full flex space-x-3 px-2 py-1'>
+                        <i className='fa-solid fa-circle-user text-lg text-orange-500'></i>
+                        <span className='text-orange-500/60'>Profile</span>
                     </a>
                     
                 </div>
                 <div>
-                    <a href="#deposit" className='rounded-2xl border border-transparent hover:border-black hover:bg-blue-950 w-full flex space-x-3 px-2 py-1'>
-                        <i className='fa-solid fa-circle-arrow-down text-lg'></i>
-                        <span>Deposit</span> 
+                    <a href="#deposit" onClick={() => setActiveTab('deposit')} className='border border-b border-transparent hover:border-b-orange-500/40 w-full flex space-x-3 px-2 py-1'>
+                        <i className='fa-solid fa-circle-arrow-down text-lg text-orange-500'></i>
+                        <span className='text-orange-500/60'>Deposit</span> 
                     </a>
                     
                 </div>
                 
                 <div>
-                    <a href="#withdraw" className='rounded-2xl border border-transparent hover:border-black hover:bg-blue-950 w-full flex space-x-3 px-2 py-1'>
-                        <i className='fa-solid fa-circle-arrow-up text-lg '></i>
-                        <span>Withdraw</span>
+                    <a href="#withdraw" onClick={() => setActiveTab('withdraw')} className='border border-b border-transparent hover:border-b-orange-500/40 w-full flex space-x-3 px-2 py-1'>
+                        <i className='fa-solid fa-circle-arrow-up text-lg text-orange-500'></i>
+                        <span className='text-orange-500/60'>Withdraw</span>
                     </a>
                     
                 </div>
                 <div>
-                    <a href="#transfer" className='rounded-2xl border border-transparent hover:border-black hover:bg-blue-950 w-full flex space-x-3 px-2 py-1'>
-                        <i class="fa-solid fa-arrow-right-arrow-left text-lg"></i>
-                        <span>Transfers</span>
+                    <a href="#transfer" onClick={() => setActiveTab('transfer')} className='border border-b border-transparent hover:border-b-orange-500/40 w-full flex space-x-3 px-2 py-1'>
+                        <i class="fa-solid fa-arrow-right-arrow-left text-lg text-orange-500"></i>
+                        <span className='text-orange-500/60'>Transfers</span>
                     </a>
                     
                 </div>
-                <div className='border-t border-black w-full my-6'></div>
+                <div className='border-t border-orange-500 w-full my-2'></div>
                 <div className='mb-2'>
                     <div>
-                        <a href="#setting" className='rounded-2xl border border-transparent hover:border-black hover:bg-blue-950 w-full flex space-x-3 px-2 py-1'>
-                            <i className='fa-solid fa-gear text-lg transition-transform duration-500 hover:rotate-[360deg]'></i>
-                            <span>Setting</span>
+                        <a href="#setting" onClick={() => setActiveTab('setting')} className='border border-b border-transparent hover:border-b-orange-500/40 w-full flex space-x-3 px-2 py-1'>
+                            <i className='fa-solid fa-gear text-lg text-orange-500 transition-transform duration-500 hover:rotate-[360deg]'></i>
+                            <span className='text-orange-500/60'>Setting</span>
                         </a>
                         
                     </div>
                 </div>
             
                 <div className='pb-[30px]'>
-                    <a href="#contact" onClick={setIsContactopen(true)} className='rounded-2xl border border-transparent hover:border-black hover:bg-blue-950 w-full flex space-x-3 px-2 pt-1 '>
-                        <i className='fa-solid fa-phone text-lg'></i>
-                        <span>Contact</span>
+                    <a href="#contact" onClick={() => setActiveTab('contact')} className='border border-b border-transparent hover:border-b-orange-500/40 w-full flex space-x-3 px-2 pt-1'>
+                        <i className='fa-solid fa-phone text-lg text-orange-500'></i>
+                        <span className='text-orange-500/60'>Contact</span>
                     </a>
                     
                 </div>
             </div>
-        </div>
-        <div id='contact' className={`flex max-w-screen mx-auto my-10 p-5 rounded-2xl border-2 border-black/20 z-20 shadow shadow-2xl bg-blue-950 ${isContactopen ? '' : ''}`}>
-            <div className='w-full'>
-               <form action="" className='space-y-10'>
-                    <div className='grid grid-cols-2 md:grid-cols-2 sm:grid-cols-1 lg:grid-cols-2 gap-4'>
-                        <div>
-                            <label htmlFor="" className='block font-bold'>Username</label>
-                            <input type="text" required className='mt-4 p-2 rounded-xl'/>
-                        </div>
-                        <div>
-                            <label htmlFor="" className='block font-bold'>email</label>
-                            <input type="email" required className='mt-4 p-2 rounded-xl'/>
-                        </div>  
-                    </div>
-                    
-                    <div>
-                        <label htmlFor="" className='block font-bold'>Subject</label>
-                        <input type="text" className='w-full mt-4 p-2 rounded-xl'/>
-                    </div>
-                    <div className=''>
-                        <div>
-                            <label htmlFor="" className='block font-bold'>Message</label>
-                            <textarea name="" id="" className='w-full mt-4 rounded-xl h-[150px] p-3'></textarea> 
-                        </div>
-                        <div>
-                            <button>
-                                <i className='fa-solid fa-paper-plane'></i>
-                            </button>
-                        </div>
-                        
-                    </div>
-                </form> 
-            </div>
-        </div>
+        </aside>
+
+        <main className='w-full flex justify-center items-center'>
+            {renderContent()}
+        </main>
     </div>
     </>
     )

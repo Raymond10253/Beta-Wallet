@@ -1,10 +1,18 @@
 import { useState } from "react"
 
+
+
 function Signup({isOpen, onClose}) {
-const [firstName, setFirstName] = useState('')
-const [lastName, setLastName] = useState('')
-const [email, setEmail] = useState('')
-const [password, setPassword] =useState('')
+const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    password: '',
+    confirmPassword: ''
+});
+const [error, setError] = useState('')
+
+
 
 if (!isOpen) return null;
 
@@ -22,29 +30,29 @@ if (!isOpen) return null;
                         
                         
                        <form className="space-y-4 flex flex-col w-full">
-                        <div className="w-full">
-                            <label htmlFor="password" className="block">First Name</label>
-                            <input type="text" required id="username" className="py-1 px-2 w-full rounded-2xl max-w-xl"/>
-                        </div>
-                        <div className="">
-                            <label htmlFor="password" className="block">Last Name</label>
-                            <input type="text" required id="username" className="py-1 px-2 w-full rounded-2xl max-w-xl"/>
-                        </div>
-                        <div className="">
-                            <label htmlFor="password" className="block">Email</label>
+                        <div>
+                            <label htmlFor="password" className="block text-md font-medium uppercase text-orange-600 my-2">First Name</label>
                             <input type="text" required id="username" className="py-1 px-2 w-full rounded-2xl max-w-xl"/>
                         </div>
                         <div>
-                            <label htmlFor="password" className="block">Password</label>
+                            <label htmlFor="password" className="block text-md font-medium uppercase text-orange-600 my-2">Last Name</label>
+                            <input type="text" required id="username" className="py-1 px-2 w-full rounded-2xl max-w-xl"/>
+                        </div>
+                        <div>
+                            <label htmlFor="password" className="block text-md font-medium uppercase text-orange-600 my-2">Email</label>
+                            <input type="text" required id="username" className="py-1 px-2 w-full rounded-2xl max-w-xl"/>
+                        </div>
+                        <div>
+                            <label htmlFor="password" className="block text-md font-medium uppercase text-orange-600 my-2">Password</label>
                             <input type="password" required id="password" className="py-1 px-2 w-full rounded-2xl"/>
                         </div>
-                        <div className="w-full">
-                            <label htmlFor="password" className="block">Confirm Password</label>
+                        <div>
+                            <label htmlFor="password" className="block text-md font-medium uppercase text-orange-600 my-2">Confirm Password</label>
                             <input type="password" required id="password" className="py-1 px-2 w-full rounded-2xl"/>
                         </div>
                        
                         <div className="flex items-center justify-center w-full">
-                            <button type="submit" className="bg-blue-600 hover:bg-blue-700 w-full rounded-2xl py-1">Sign Up</button>
+                            <button type="submit" className="bg-orange-600 hover:bg-orange-700 w-full rounded-2xl py-1">Sign Up</button>
                         </div>
                     </form> 
                     
