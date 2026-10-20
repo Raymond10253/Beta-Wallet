@@ -9,6 +9,7 @@ import {
   CartesianGrid 
 } from 'recharts';
 
+
 // Sample data tracking deposits and withdrawals over time
 const financialData = [
   { date: 'Jan 1', balance: 4000, deposit: 1200, withdrawal: 200 },
@@ -18,10 +19,14 @@ const financialData = [
   { date: 'Jan 20', balance: 8500, deposit: 2500, withdrawal: 1100 },
   { date: 'Jan 25', balance: 10120, deposit: 3500, withdrawal: 1880 },
 ];
+
 export default function Overview() {
     return(
         <>
             <div className="relative w-full h-full border border-black bg-blue-900 p-4 inset-0 z-20">
+                <div className='mb-2 text-orange-500 font-bold'>
+                    <span>Welcome! John Doe</span>
+                </div>
                 <div className="grid grid-cols-2 md:grid-cols-1 sm:grid-cols-1 lg:grid-cols-2 gap-2">
                     <div className="p-3 w-full rounded-xl border border-black/20 shadow shadow-xl bg-gradient-to-b from-blue-950/50 via-orange-950/50 to-orange-500/50">
                         <div className="bg-transparent p-6 rounded-3xl shadow-xl w-full">
@@ -48,21 +53,21 @@ export default function Overview() {
                                 <AreaChart data={financialData} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
                                     <defs>
                                     <linearGradient id="colorBalance" x1="0" y1="0" x2="0" y2="1">
-                                        <stop offset="5%" stopColor="#f97316" stopOpacity={0.4}/>
-                                        <stop offset="95%" stopColor="#f97316" stopOpacity={0}/>
+                                        <stop offset="95%" stopColor="#101010" stopOpacity={0.4}/>
+                                        <stop offset="90%" stopColor="#101010" stopOpacity={0}/>
                                     </linearGradient>
                                     </defs>
                                     <CartesianGrid strokeDasharray="3 3" stroke="#221f2b" />
-                                    <XAxis dataKey="date" stroke="#6b7280" textAnchor="end" tick={{ fontSize: 12 }} />
-                                    <YAxis stroke="#6b7280" tick={{ fontSize: 12 }} />
+                                    <XAxis dataKey="date" stroke="#101010" textAnchor="end" tick={{ fontSize: 12 }} />
+                                    <YAxis stroke="#101010" tick={{ fontSize: 12 }} />
                                     <Tooltip 
-                                    contentStyle={{ backgroundColor: '#1a1721', borderColor: '#374151', borderRadius: '1rem', color: '#fff' }} 
+                                    contentStyle={{ backgroundColor: '#1a1721', borderColor: '#374151', borderRadius: '1px', color: '#fff' }} 
                                     />
                                     <Area 
                                     type="linear" 
                                     dataKey="balance" 
-                                    stroke="#f97316" 
-                                    strokeWidth={3}
+                                    stroke="#f87c17" 
+                                    strokeWidth={2}
                                     fillOpacity={1} 
                                     fill="url(#colorBalance)" 
                                     />
@@ -71,20 +76,31 @@ export default function Overview() {
                             </div>
                         </div>
                     </div>
-                    <div className="p-3 w-full rounded-xl bg-blue-950 border-2 border-black"></div>
+                    <div className="p-3 w-full rounded-xl bg-blue-950 border-2 border-black">
+                        
+                    </div>
                 </div>
                 <div>
                     <div className="p-3 w-full rounded-xl bg-gradient-to-br from-blue-950/50 via-orange-950/50 to-orange-500/50 border border-black/20 shadow shadow-xl mt-2">
                         <div></div>
-                        <div className="flex justify-center items-center space-x-2 px-10">
-                            <button className="w-full">
-                                <i class="fa-solid fa-arrow-down-long"></i>
-                                <span>Deposit</span>
-                            </button>
-                            <button className="w-full border border-black py-1 rounded-xl">
-                                <i class="fa-solid fa-arrow-up-long"></i>
-                                <span>Withdraw</span>
-                            </button>
+                        <div className='grid grid-cols-2 md:grid-cols-1 sm:grid-cols-1 lg:grid-cols-2'>
+                            <div className="flex justify-center items-center space-x-2 px-10">
+                                <button className="w-full bg-orange-600 hover:bg-orange-700 text-white border border-orange-600 py-1 rounded-xl space-x-2 font-bold">
+                                    <i className="fa-solid fa-arrow-down-long"></i>
+                                    <span>Deposit</span>
+                                </button>
+                                <button className="w-full border border-orange-700 text-orange-500 py-1 rounded-xl space-x-2 font-bold hover:bg-orange-700 hover:text-white">
+                                    <i className="fa-solid fa-arrow-up-long"></i>
+                                    <span>Withdraw</span>
+                                </button>
+                            </div>
+                            <div>
+                                <button className="w-full border border-orange-700 text-orange-500 py-1 rounded-xl space-x-2 font-bold hover:bg-orange-700 hover:text-white">
+                                    <i className="fa-solid fa-arrow-up-long"></i>
+                                    <span>Saving & Investments</span>
+                                </button>
+                            </div>
+                            
                         </div>
                     </div>
                 </div>
