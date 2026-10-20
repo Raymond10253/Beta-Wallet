@@ -7,6 +7,6 @@ import Contact from './Contact.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <App />
+    <NavBar />
   </StrictMode>,
 )

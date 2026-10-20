@@ -1,7 +1,7 @@
 export default function Contact() {
     return(
         <>
-            <div id='contact' className='flex w-full h-full mx-auto p-5 border-2 border-black/20 z-20 shadow shadow-2xl bg-transparent'>
+            <div id='contact' className='rounded-2xl flex w-full h-full mx-3 p-5 border-2 border-black/20 z-20 shadow shadow-2xl bg-blue-950/50'>
             <div className='w-full'>
                <form action="" className='space-y-10'>
                     <div className='grid grid-cols-2 md:grid-cols-2 sm:grid-cols-1 lg:grid-cols-2 gap-4'>

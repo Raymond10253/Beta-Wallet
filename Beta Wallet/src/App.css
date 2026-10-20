@@ -1,9 +1,1 @@
-@keyframes shake {
-  0%, 100% { transform: translatey(0); }
-  20%, 60% { transform: translatey(-3px); }
-  40%, 80% { transform: translatey(3px); }
-}
 
-.animate-shake {
-  animation: shake 0.5s ease-in-out infinite;
-}
