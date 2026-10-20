@@ -4,6 +4,7 @@ import heroImage from 'C:/Users/HomePC/Desktop/My Projects/Bash-Wallet/Beta Wall
 import Login from './login'
 import Signup from './signup'
 
+
 function App() {
   const [issigninOpen, setIssigninOpen] =useState(false)
   const [isLoginOpen, setIsLoginOpen] =useState(false)
@@ -11,6 +12,7 @@ function App() {
 
   return (
     <>
+     
       <header className='relative border-b border-slate-100 bg-slate-900 py-7 px-3 flex justify-between backdrop-blur-md absolute w-full'>
         <div className='text-slate-300 text-2xl font-bold'>
           <div className='flex gap-6 pl-4'>
@@ -39,8 +41,8 @@ function App() {
           </div>
         </div>
         <div className='space-x-3 text-slate-300'>
-          <button className='px-4 py-2 border border-orange-500 rounded-xl hover:bg-orange-600 font-bold' onClick={() => setIsLoginOpen(true)}>LOG IN</button>
-          <button className='px-4 py-2 bg-orange-500 rounded-xl hover:bg-orange-600 font-bold' onClick={() => setIssigninOpen(true)}>SIGN UP</button>
+          <button className='px-4 py-2 border border-orange-500 rounded-xl hover:bg-orange-600' onClick={() => setIsLoginOpen(true)}>LOG IN</button>
+          <button className='px-4 py-2 bg-orange-500 rounded-xl hover:bg-orange-600' onClick={() => setIssigninOpen(true)}>SIGN UP</button>
         </div>
 
       </header>

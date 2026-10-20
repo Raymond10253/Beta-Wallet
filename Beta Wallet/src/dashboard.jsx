@@ -9,7 +9,7 @@ import Setting from './Setting';
 import Contact from './Contact';
 
 
-function NavBar() {
+export default function NavBar() {
 const [activeTab, setActiveTab] = useState('dashboard')
 const renderContent = () => {
     switch (activeTab) {
@@ -103,4 +103,3 @@ const renderContent = () => {
     )
    
 }
-export default NavBar
