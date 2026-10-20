@@ -1,4 +1,6 @@
 import React from 'react';
+import Deposit from './deposit';
+import Withdraw from './Withdraw';
 import { 
   AreaChart, 
   Area, 
@@ -77,7 +79,30 @@ export default function Overview() {
                         </div>
                     </div>
                     <div className="p-3 w-full rounded-xl bg-blue-950 border-2 border-black">
-                        
+                        <div className="bg-gradient-to-br from-gray-900 to-indigo-950 text-white p-5 rounded-2xl shadow-inner space-y-4 relative overflow-hidden">
+                            <div className="absolute -right-10 -bottom-10 w-32 h-32 bg-brand-500/20 rounded-full blur-2xl"></div>
+                            <div className="flex justify-between items-center">
+                                <span className="text-xs tracking-widest uppercase text-indigo-200 font-semibold">Credit card</span>
+                                <div className="flex gap-2">
+                                    <i className="fa-brands fa-cc-visa text-2xl text-white"></i>
+                                    <i className="fa-brands fa-cc-mastercard text-2xl text-white"></i>
+                                </div>
+                            </div>
+                            <div>
+                                <label className="block text-[10px] text-gray-400 uppercase mb-1"></label>
+                                <input type="text" required placeholder="1234 **** **** 5678" maxlength="19" oninput="formatCardNumber(this)" className="w-full bg-white/10 border border-white/20 rounded-lg px-3 py-2 text-sm tracking-widest font-mono text-white placeholder-gray-500 focus:outline-none focus:border-brand-500"/>
+                            </div>
+                            <div className="grid grid-cols-2 gap-4">
+                                <div>
+                                    <label className="block text-[10px] text-gray-400 uppercase mb-1"></label>
+                                    <input type="text" required placeholder="12/28" maxlength="5"  className="w-full bg-white/10 border border-white/20 rounded-lg px-3 py-2 text-sm font-mono text-white placeholder-gray-500 focus:outline-none focus:border-brand-500"/>
+                                </div>
+                                <div>
+                                    <label className="block text-[10px] text-gray-400 uppercase mb-1"></label>
+                                    <input type="password" required placeholder="1234" maxlength="4" className="w-full bg-white/10 border border-white/20 rounded-lg px-3 py-2 text-sm font-mono text-white placeholder-gray-500 focus:outline-none focus:border-brand-500"/>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div>

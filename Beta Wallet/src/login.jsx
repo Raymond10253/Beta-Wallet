@@ -23,11 +23,25 @@ if(!isOpen) return null;
                        <form className="space-y-4 flex flex-col w-full">
                         <div>
                             <label htmlFor="password" className="block text-md uppercase text-orange-600 my-2">Username</label>
-                            <input type="text" required id="username" className="py-1 px-2 w-full rounded-2xl max-w-xl"/>
+                            <input 
+                            type="text" 
+                            required id="username" 
+                            name="username"
+                            placeholder="username"
+                            
+                            
+                            className="py-1 px-2 w-full rounded-2xl max-w-xl"/>
                         </div>
                         <div>
                             <label htmlFor="password" className="block text-md uppercase text-orange-600 my-2">Password</label>
-                            <input type="password" required id="password" maxLength={8} className="py-1 px-2 w-full rounded-2xl"/>
+                            <input 
+                            type="password" 
+                            required id="password" 
+                            maxLength={8}
+                            placeholder="password"
+                            
+                            
+                            className="py-1 px-2 w-full rounded-2xl"/>
                         </div> 
                         <div className="flex items-center justify-center w-full">
                             <button type="submit" className="bg-orange-600 hover:bg-orange-700 w-full uppercase font-medium rounded-2xl py-1">Log In</button>

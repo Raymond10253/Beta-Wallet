@@ -7,17 +7,17 @@ export default function Contact() {
                     <div className='grid grid-cols-2 md:grid-cols-2 sm:grid-cols-1 lg:grid-cols-2 gap-4'>
                         <div>
                             <label htmlFor="" className="block text-md font-medium uppercase text-orange-600 my-2">Username</label>
-                            <input type="text" required className='mt-4 px-2 py-3 rounded-xl w-full z-10 shadow shadow-2xl'/>
+                            <input type="text" required placeholder="Username" className='mt-4 px-2 py-3 rounded-xl w-full z-10 shadow shadow-2xl'/>
                         </div>
                         <div>
                             <label htmlFor="" className="block text-md font-medium uppercase text-orange-600 my-2">email</label>
-                            <input type="email" required className='mt-4 px-2 py-3 rounded-xl w-full'/>
+                            <input type="email" required placeholder="e.g..johndoe@gmail.com" className='mt-4 px-2 py-3 rounded-xl w-full'/>
                         </div>  
                     </div>
                     
                     <div>
                         <label htmlFor="" className="block text-md font-medium uppercase text-orange-600 my-2">Subject</label>
-                        <input type="text" className='w-full mt-4 px-2 py-3 rounded-xl'/>
+                        <input type="text" placeholder="e.g..transaction" className='w-full mt-4 px-2 py-3 rounded-xl'/>
                     </div>
                     <div className=''>
                         <div>
