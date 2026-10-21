@@ -13,7 +13,7 @@ function App() {
   return (
     <>
      
-      <header className='relative border-b border-slate-100 bg-slate-900 py-7 px-3 flex justify-between backdrop-blur-md absolute w-full'>
+      <header className='absolute sticky top-0 left-0 right-0 z-50 border-b border-slate-100 bg-slate-900 py-7 px-3 flex justify-between backdrop-blur-md absolutel'>
         <div className='text-slate-300 text-2xl font-bold'>
           <div className='flex gap-6 pl-4'>
             
@@ -28,16 +28,16 @@ function App() {
         </div>
         <div className='flex space-x-6 text-black'>
           <div>
-            <a href="" className='text-orange-500 hover:text-orange-800'>Services</a>
+            <a href="#services" className='text-orange-500 hover:text-orange-800'>Services</a>
           </div>
           <div>
-            <a href="" className='text-orange-500 hover:text-orange-800'>How It works</a>
+            <a href="#how_it_works" className='text-orange-500 hover:text-orange-800'>How It works</a>
           </div>
           <div>
-            <a href="" className='text-orange-500 hover:text-orange-800'>Benefits</a>
+            <a href="#benefits" className='text-orange-500 hover:text-orange-800'>Benefits</a>
           </div>
           <div>
-            <a href="" className='text-orange-500 hover:text-orange-800'>Pricing</a>
+            <a href="#pricing" className='text-orange-500 hover:text-orange-800'>Pricing</a>
           </div>
         </div>
         <div className='space-x-3 text-slate-300'>
@@ -46,8 +46,8 @@ function App() {
         </div>
 
       </header>
-      <main class="bg-transparent px-4 py-8 ml-10 mt-[20px]
-      flex justify-center items-center pt-27">
+      <section id='hero' className="bg-transparent px-4
+        min-h-screen flex items-center justify-center pb-5 overflow-hidden">
         <div>
           <div className='grid grid-cols-2 md:grid-cols-1 sm:grid-cols-1 lg:grid-cols-2'>
             <div>
@@ -91,6 +91,164 @@ function App() {
             </div>
           
         </div>
+      </section>
+      <section id='services' className='py-24'>
+        <div className='space-y-5'>
+          <div className='py-2'>
+            <div className='flex items-center justify-center mb-2 text-2xl font-extrabold text-slate-950/70 uppercase'>
+              <h4>Services</h4>
+            </div>
+            <div className='max-w-xs mx-auto py-1 rounded-full bg-orange-600'></div>
+          </div>
+          <div className='grid grid-cols-4 md:grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 p-4'>
+            <div className="p-6 rounded-2xl shadow-xl w-full bg-blue-950/70 z-20 hover:scale-105">
+                <h3 className='text-sm text-orange-600 font-bold uppercase mb-2'>Multi-Currency Account / Debit Cards:</h3>
+                <p className='text-sm text-slate-300'>Store USD, EUR, KES, or crypto, and spend anywhere with physical or virtual cards.</p>
+            </div>
+            <div className='p-6 rounded-2xl shadow-xl w-full bg-blue-950/70 z-20 hover:scale-105'>
+              <h3 className='text-sm text-orange-600 font-bold uppercase mb-2'>Instant Peer-to-Peer (P2P) Transfers:</h3>
+              <p className='text-sm text-slate-300'>Send funds instantly to other wallet users or contacts using phone numbers, QR codes, or wallet tags.</p>
+            </div>
+            <div className='p-6 rounded-2xl shadow-xl w-full bg-blue-950/70 z-20 hover:scale-105'>
+              <h3 className='text-sm text-orange-600 font-bold uppercase mb-2'>Currency & Crypto Exchange:</h3>
+              <p className='text-sm text-slate-300'>Swap fiat currencies or exchange tokens with real-time conversion rates.</p>
+            </div>
+            <div className='p-6 rounded-2xl shadow-xl w-full bg-blue-950/70 z-20 hover:scale-105'>
+              <h3 className='text-sm text-orange-600 font-bold uppercase mb-2'>E-Commerce Checkout / API:</h3>
+              <p className='text-sm text-slate-300'>One-tap online checkout for online merchants.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id='how_it_works' className='py-24 px-4'>
+        <div className='space-y-5'>
+          <div className='py-2'>
+            <div className='flex items-center justify-center mb-2 text-2xl font-extrabold text-slate-950/70 uppercase'>
+              <h4>How It Works</h4>
+            </div>
+            <div className='max-w-xs mx-auto py-1 rounded-full bg-orange-600'></div>
+          </div>
+          <div>
+            <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-1 relative">
+  
+              <div className="flex flex-col-2 gap-4">
+                <div className="w-14 h-14 mt-8 rounded-full bg-orange-500 text-slate-950 font-black text-xl flex items-center justify-center shadow-lg shadow-orange-500/20 z-10">
+                  1
+                </div>
+                <div>
+                  <h3 className="text-lg font-bold text-white mt-6 mb-2">Download & Register</h3>
+                  <p className="text-slate-400 text-sm max-w-xs">Install the app/web app and complete identity verification (KYC) in under 2 minutes.</p>
+                </div>
+                
+              </div>
+              <div className='ml-6 h-20 border-l-2 border-orange-600'></div>
+
+              
+              <div className="flex flex-col-2 gap-4">
+                <div className="w-14 h-14 mt-8 rounded-full bg-slate-800 text-orange-500 border border-orange-500/30 font-black text-xl flex items-center justify-center z-10">
+                  2
+                </div>
+                <div>
+                  <h3 className="text-lg font-bold text-white mt-6 mb-2">Fund Your Wallet</h3>
+                  <p className="text-slate-400 text-sm max-w-xs">Connect a bank account, debit card, M-Pesa, or crypto address to deposit funds.</p>
+                </div>
+                
+              </div>
+              <div className='ml-6 h-20 border-l-2 border-orange-600'></div>
+              
+              <div className="flex flex-col-2 gap-4">
+                <div className="w-14 h-14 mt-8 rounded-full bg-slate-800 text-orange-500 border border-orange-500/30 font-black text-xl flex items-center justify-center z-10">
+                  3
+                </div>
+                <div>
+                  <h3 className="text-lg font-bold text-white mt-6 mb-2">Transact & Manage</h3>
+                  <p className="text-slate-400 text-sm max-w-xs">Send money, pay bills, scan QR codes at checkout, or swap assets.</p>
+                </div>
+                
+              </div>
+              <div className='ml-6 h-20 border-l-2 border-orange-600'></div>
+
+              <div className="flex flex-col-2 gap-4">
+                <div className="w-14 h-14 mt-8 rounded-full bg-slate-800 text-orange-500 border border-orange-500/30 font-black text-xl flex items-center justify-center z-10">
+                  4
+                </div>
+                <div>
+                  <h3 className="text-lg font-bold text-white mt-6 mb-2">Track & Grow</h3>
+                  <p className="text-slate-400 text-sm max-w-xs">Monitor spending categories in real-time and earn yield/rewards on your balances.</p>
+                </div>
+                
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id='benefits' className='py-24'>
+        <div className='space-y-5'>
+          <div className='py-2'>
+            <div className='flex items-center justify-center mb-2 text-2xl font-extrabold text-slate-950/70 uppercase'>
+              <h4>benefits</h4>
+            </div>
+            <div className='max-w-xs mx-auto py-1 rounded-full bg-orange-600'></div>
+          </div>
+          <div className='px-4'>
+            <div className='flex flex-col space-y-4'>
+              
+              <div className="p-6 rounded-2xl shadow-xl max-w-lg mx-auto w-full bg-blue-950/70 z-20 hover:scale-105">
+                <h3>01</h3>
+                <h4>
+                  Bank-Grade Security:
+                </h4>
+                <p>
+                  Biometric logins (Face ID), 2FA, tokenization, and multi-party computation (MPC) key storage.
+                </p> 
+              </div>
+              
+              
+              <div className="p-6 rounded-2xl shadow-xl max-w-lg mx-auto w-full bg-blue-950/70 z-20 hover:scale-105">
+                <h3 className='text-sm text-orange-600 font-bold'>02</h3>
+                <h4>
+                  Zero / Ultra-Low Fees:
+                </h4>
+                <p>
+                  Free instant internal transfers and transparent foreign exchange rates.
+                </p> 
+              </div>
+        
+              <div className="p-6 rounded-2xl shadow-xl max-w-lg mx-auto w-full bg-blue-950/70 z-20 hover:scale-105">
+                <h3>03</h3>
+                <h4>
+                  Global Access:
+                </h4>
+                <p>
+                  Borderless transactions with multi-currency ledgers and international acceptance.
+                </p> 
+              </div>
+
+              <div className="p-6 rounded-2xl shadow-xl max-w-lg mx-auto w-full bg-blue-950/70 z-20 hover:scale-105">
+                <h3>04</h3>
+                <h4>
+                 Cashback & Rewards: 
+                </h4>
+                <p>
+                  Earn rewards, loyalty points, or cashback on every transaction.
+                </p>
+                 
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id='pricing' className='py-24'>
+        <div className='space-y-5'>
+          <div className='py-2'>
+            <div className='flex items-center justify-center mb-2 text-2xl font-extrabold text-slate-950/70 uppercase'>
+              <h4>Pricing</h4>
+            </div>
+            <div className='max-w-xs mx-auto py-1 rounded-full bg-orange-600'></div>
+          </div>
+        </div>
+      </section>
+      <main>
         <Signup 
           isOpen = {issigninOpen}
           onClose ={() => setIssigninOpen(false)}
