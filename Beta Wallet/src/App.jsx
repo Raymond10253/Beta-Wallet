@@ -247,7 +247,7 @@ function App() {
             <div className='max-w-xs mx-auto py-1 rounded-full bg-orange-600'></div>
           </div>
           <div>
-            <div className='grid grid-cols-2 gap-4'>
+            <div className='grid grid-cols-2 gap-6'>
               <div className="p-6 rounded-2xl shadow-xl border border-orange-500/40 transition-all duration-300 w-full bg-gradient-to-br from-blue-950/70 to-orange-600/30 z-20 hover:scale-105">
                   <h4 className='font-bold text-orange-500'>Standard (Free):</h4>
                   <ul className='font-medium text-slate-400'>

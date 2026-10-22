@@ -1,8 +1,28 @@
 import React from 'react';
-import Signup from './signup';
+import { useState } from 'react';
+import Login from './login';
 
 
 export default function Profile() {
+    const [editForm, setEditForm] = useState({
+        userName: '',
+        email: '',
+        phoneNumber: ''
+    })
+    const [error, setError] = useState('')
+    const handleEdit = (e) => {
+        e.preventDefault();
+    if(!editForm.userName || !editForm.email || !editForm.userName){
+        setError("please fill in the details");
+        return;
+    }
+    setEditForm({
+        userName: '',
+        email: '',
+        phoneNumber: '' 
+    })
+}
+    
   return (
     <>
             <div id='contact' className='rounded-2xl flex w-full h-full mx-3 p-5 border-2 border-black/20 z-20 shadow shadow-2xl bg-gradient-to-b from-blue-950/50 to-orange-700/50'>
@@ -25,23 +45,32 @@ export default function Profile() {
                 <div className='flex gap-4'>
                     <div className='space-y-6 bg-slate-900 p-6 rounded-xl w-1/3 h-full'>
                         <div>
-                            <label htmlFor="" className='block'>Full Name</label>
-                            <span id='full-name' className='font-medium text-slate-400'>John Doe</span>
+                            <label htmlFor="" className='block'>User Name</label>
+                            <span id='user-name' className='font-medium text-slate-400'></span>
                         </div>
                         <div>
                             <label htmlFor="" className='block'>Email</label>
-                            <span>johndoe@gmail.com</span>
+                            <span id='email'>johndoe@gmail.com</span>
                         </div>
                         <div>
                             <label htmlFor="" className='block'>Phone Number</label>
-                            <span>+254700000000</span>
+                            <span id='phone-number'>+254700000000</span>
                         </div>
                     </div>
-                    <div className="bg-slate-900 p-6 rounded-xl w-2/3 h-full hidden">
+                    <div className="bg-slate-900 p-6 rounded-xl w-2/3 h-full">
                         <div>
                             <form action="">
                                 <div>
-                                    <label htmlFor=""></label>
+                                    <label htmlFor="">USERNAME</label>
+                                    <input 
+                                        type="text" 
+                                        required id="" 
+                                        name="userName"
+                                        placeholder="UserName"
+                                        value={editForm.userName}
+                                        onChange={handleEdit}
+                                        className="py-1 px-2 w-full rounded-2xl max-w-xl" 
+                                    />
                                 </div>
                             </form>
                         </div>
@@ -50,6 +79,9 @@ export default function Profile() {
                     </div>
                 </div>
                     
+               </div>
+               <div>
+
                </div>
             </div>
         </div>

@@ -3,6 +3,10 @@ import NavBar from "./dashboard";
 
 
 function Login({isOpen, onClose}) {
+    const [userForm, setUserForm] = useState({
+        userName: '',
+        password: ''
+    })
 
 
 if(!isOpen) return null;
@@ -28,8 +32,7 @@ if(!isOpen) return null;
                             required id="username" 
                             name="username"
                             placeholder="username"
-                            
-                            
+                            value={userForm.userName}
                             className="py-1 px-2 w-full rounded-2xl max-w-xl"/>
                         </div>
                         <div>
@@ -39,8 +42,7 @@ if(!isOpen) return null;
                             required id="password" 
                             maxLength={8}
                             placeholder="password"
-                            
-                            
+                            value={userForm.password}
                             className="py-1 px-2 w-full rounded-2xl"/>
                         </div> 
                         <div className="flex items-center justify-center w-full">
