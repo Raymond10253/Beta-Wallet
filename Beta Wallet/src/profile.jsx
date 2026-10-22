@@ -4,24 +4,11 @@ import Login from './login';
 
 
 export default function Profile() {
-    const [editForm, setEditForm] = useState({
-        userName: '',
-        email: '',
-        phoneNumber: ''
-    })
-    const [error, setError] = useState('')
-    const handleEdit = (e) => {
-        e.preventDefault();
-    if(!editForm.userName || !editForm.email || !editForm.userName){
-        setError("please fill in the details");
-        return;
-    }
-    setEditForm({
-        userName: '',
-        email: '',
-        phoneNumber: '' 
-    })
-}
+const [userName, setUserName] = useState('');
+const [email, setEmail] = useState('');
+const [phoneNumber, setPhoneNumber] = useState('');
+const [isHidden, setIsHidden] =useState(true);
+
     
   return (
     <>
@@ -34,44 +21,83 @@ export default function Profile() {
                     </div>
                     <div>
                         <div>
-                           <span className='text-lg text-orange-600 font-medium'>John Doe</span> 
+                           <span className='text-md font-extrabold text-black'>Welcome! {userName}</span> 
                         </div>
-                        <div>
-                           <span className='text-lg text-orange-600'>johndoe@gmail.com</span> 
-                        </div>
-                        
                     </div>
                 </div>
                 <div className='flex gap-4'>
-                    <div className='space-y-6 bg-slate-900 p-6 rounded-xl w-1/3 h-full'>
+                    <div className='space-y-6 bg-slate-900/50 p-6 rounded-xl w-1/3 h-full'>.
                         <div>
-                            <label htmlFor="" className='block'>User Name</label>
-                            <span id='user-name' className='font-medium text-slate-400'></span>
+                            <h3 className='text-xl font-bold bg-gradient-to-br from-orange-600 via-blue-300 to-indigo-700 bg-clip-text text-transparent underline'>Profile details</h3>
                         </div>
                         <div>
-                            <label htmlFor="" className='block'>Email</label>
-                            <span id='email'>johndoe@gmail.com</span>
+                            <label htmlFor="" className='block text-orange-500 uppercase text-sm my-2'>Username</label>
+                            <span id='user-name' className='font-medium text-slate-400'>{userName}</span>
                         </div>
                         <div>
-                            <label htmlFor="" className='block'>Phone Number</label>
-                            <span id='phone-number'>+254700000000</span>
+                            <label htmlFor="" className='block text-orange-500 uppercase text-sm my-2'>Email</label>
+                            <span id='email' className='font-medium text-slate-400'>{email}</span>
+                        </div>
+                        <div>
+                            <label htmlFor="" className='block text-orange-500 uppercase text-sm my-2'>Phone Number</label>
+                            <span id='phone-number' className='font-medium text-slate-400'>{phoneNumber}</span>
+                        </div>
+
+                        <div>
+                            <button className='w-full bg-orange-500 p-1 rounded-xl text-white font-bold' onClick={() => setIsHidden(false)}>EDIT PROFILE</button>
                         </div>
                     </div>
-                    <div className="bg-slate-900 p-6 rounded-xl w-2/3 h-full">
+                    <div className="bg-slate-900/50 p-6 rounded-xl w-2/3 h-full" hidden={isHidden}>
                         <div>
-                            <form action="">
+                        <button className="text-gray-500 hover:text-gray-700" onClick={() => setIsHidden(true)}>
+                            <i className="fa-solid fa-xmark"></i>
+                        </button>
+                    </div>
+                        <div>
+                            <form action="" id='profileform' className='space-y-6'>
                                 <div>
-                                    <label htmlFor="">USERNAME</label>
+                                    <label htmlFor="" className='block text-orange-500 uppercase text-sm my-2'>USERNAME</label>
                                     <input 
                                         type="text" 
                                         required id="" 
                                         name="userName"
                                         placeholder="UserName"
-                                        value={editForm.userName}
-                                        onChange={handleEdit}
-                                        className="py-1 px-2 w-full rounded-2xl max-w-xl" 
+                                        value={userName}
+                                        onChange={(e) => setUserName(e.target.value)}
+                                        className="py-1 px-2 w-full rounded-2xl text-grey-900" 
                                     />
                                 </div>
+                                <div>
+                                    <label htmlFor=""  className='block text-orange-500 uppercase text-sm my-2'>EMAIL</label>
+                                    <input 
+                                        type="email" 
+                                        required id="" 
+                                        name="email"
+                                        placeholder="email"
+                                        value={email}
+                                        onChange={(e) => setEmail(e.target.value)}
+                                        className="py-1 px-2 w-full rounded-2xl text-grey-900" 
+                                    />
+                                </div>
+                                <div>
+                                    <label htmlFor="" className='block text-orange-500 uppercase text-sm my-2'>PHONE NUMBER</label>
+                                    <input 
+                                        type="number" 
+                                        required id="" 
+                                        name="phoneNumber"
+                                        placeholder="Phone Number"
+                                        value={phoneNumber}
+                                        maxLength={13}
+                                        onChange={(e) => setPhoneNumber(e.target.value)}
+                                        className="py-1 px-2 w-full rounded-2xl text-grey-900" 
+                                    />
+                                </div>
+                                <div className='max-w-full mx-auto my-3'>
+                                    <button type='submit' id='savebtn' className='w-full bg-orange-500 text-white text-md font-bold p-2 rounded-full'>
+                                        <span id='savetext'>SAVE</span>
+                                    </button>
+                                </div>
+                                
                             </form>
                         </div>
                         

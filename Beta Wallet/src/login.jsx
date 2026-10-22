@@ -1,12 +1,20 @@
 import { useState } from "react";
 import NavBar from "./dashboard";
 
-
 function Login({isOpen, onClose}) {
     const [userForm, setUserForm] = useState({
         userName: '',
         password: ''
-    })
+    });
+
+    const handleUser = (e) =>{
+    const {name, value} =e.target;
+    setUserForm((prevData) =>({
+        ...prevData,
+        [name]: value
+    }));
+};
+        
 
 
 if(!isOpen) return null;
@@ -17,7 +25,7 @@ if(!isOpen) return null;
                 <div className="fixed inset-0 bg-black/70 backdrop-blur-sm transition-opacity"></div>
                 <div className="bg-white dark:bg-blue-800/60 rounded-3xl max-w-md w-full p-3 sm:p-8 shadow-2xl z-10">
                     <div>
-                        <button onClick={onClose} className="ttext-gray-500 hover:text-gray-700">
+                        <button onClick={onClose} className="text-gray-500 hover:text-gray-700">
                             <i className="fa-solid fa-xmark"></i>
                         </button>
                     </div>
@@ -33,6 +41,7 @@ if(!isOpen) return null;
                             name="username"
                             placeholder="username"
                             value={userForm.userName}
+                            onChange={handleUser}
                             className="py-1 px-2 w-full rounded-2xl max-w-xl"/>
                         </div>
                         <div>
@@ -43,6 +52,7 @@ if(!isOpen) return null;
                             maxLength={8}
                             placeholder="password"
                             value={userForm.password}
+                            onChange={handleUser}
                             className="py-1 px-2 w-full rounded-2xl"/>
                         </div> 
                         <div className="flex items-center justify-center w-full">
