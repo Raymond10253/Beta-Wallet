@@ -28,21 +28,21 @@ function App() {
         </div>
         <div className='flex space-x-6 text-black'>
           <div>
-            <a href="#services" className='text-orange-500 hover:text-orange-800'>Services</a>
+            <a href="#services" className='text-orange-500 hover:text-orange-800 transition-all duration-300'>Services</a>
           </div>
           <div>
-            <a href="#how_it_works" className='text-orange-500 hover:text-orange-800'>How It works</a>
+            <a href="#how_it_works" className='text-orange-500 hover:text-orange-800 transition-all duration-300'>How It works</a>
           </div>
           <div>
-            <a href="#benefits" className='text-orange-500 hover:text-orange-800'>Benefits</a>
+            <a href="#benefits" className='text-orange-500 hover:text-orange-800 transition-all duration-300'>Benefits</a>
           </div>
           <div>
-            <a href="#pricing" className='text-orange-500 hover:text-orange-800'>Pricing</a>
+            <a href="#pricing" className='text-orange-500 hover:text-orange-800 transition-all duration-300'>Pricing</a>
           </div>
         </div>
         <div className='space-x-3 text-slate-300'>
-          <button className='px-4 py-2 border border-orange-500 rounded-xl hover:bg-orange-600' onClick={() => setIsLoginOpen(true)}>LOG IN</button>
-          <button className='px-4 py-2 bg-orange-500 rounded-xl hover:bg-orange-600' onClick={() => setIssigninOpen(true)}>SIGN UP</button>
+          <button className=' transition-all duration-300 px-4 py-2 border border-orange-500 rounded-xl hover:bg-orange-600' onClick={() => setIsLoginOpen(true)}>LOG IN</button>
+          <button className=' transition-all duration-300 px-4 py-2 bg-orange-500 rounded-xl hover:bg-orange-600' onClick={() => setIssigninOpen(true)}>SIGN UP</button>
         </div>
 
       </header>
@@ -101,19 +101,19 @@ function App() {
             <div className='max-w-xs mx-auto py-1 rounded-full bg-orange-600'></div>
           </div>
           <div className='grid grid-cols-4 md:grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 p-4'>
-            <div className="p-6 rounded-2xl shadow-xl w-full bg-blue-950/70 z-20 hover:scale-105">
+            <div className="p-6 rounded-2xl shadow-xl w-full bg-blue-950/70 z-2 transition-all duration-3000 hover:scale-105">
                 <h3 className='text-sm text-orange-600 font-bold uppercase mb-2'>Multi-Currency Account / Debit Cards:</h3>
                 <p className='text-sm text-slate-300'>Store USD, EUR, KES, or crypto, and spend anywhere with physical or virtual cards.</p>
             </div>
-            <div className='p-6 rounded-2xl shadow-xl w-full bg-blue-950/70 z-20 hover:scale-105'>
+            <div className='p-6 rounded-2xl shadow-xl w-full bg-blue-950/70 z-20 transition-all duration-300 hover:scale-105'>
               <h3 className='text-sm text-orange-600 font-bold uppercase mb-2'>Instant Peer-to-Peer (P2P) Transfers:</h3>
               <p className='text-sm text-slate-300'>Send funds instantly to other wallet users or contacts using phone numbers, QR codes, or wallet tags.</p>
             </div>
-            <div className='p-6 rounded-2xl shadow-xl w-full bg-blue-950/70 z-20 hover:scale-105'>
+            <div className='p-6 rounded-2xl shadow-xl w-full bg-blue-950/70 z-20 transition-all duration-300 hover:scale-105'>
               <h3 className='text-sm text-orange-600 font-bold uppercase mb-2'>Currency & Crypto Exchange:</h3>
               <p className='text-sm text-slate-300'>Swap fiat currencies or exchange tokens with real-time conversion rates.</p>
             </div>
-            <div className='p-6 rounded-2xl shadow-xl w-full bg-blue-950/70 z-20 hover:scale-105'>
+            <div className='p-6 rounded-2xl shadow-xl w-full bg-blue-950/70 z-20 transition-all duration-300 hover:scale-105'>
               <h3 className='text-sm text-orange-600 font-bold uppercase mb-2'>E-Commerce Checkout / API:</h3>
               <p className='text-sm text-slate-300'>One-tap online checkout for online merchants.</p>
             </div>
@@ -193,43 +193,43 @@ function App() {
           <div className='px-4'>
             <div className='flex flex-col space-y-4'>
               
-              <div className="p-6 rounded-2xl shadow-xl max-w-lg mx-auto w-full bg-blue-950/70 z-20 hover:scale-105">
-                <h3>01</h3>
-                <h4>
+              <div className="p-6 rounded-2xl shadow-xl border border-orange-500/40 transition-all duration-300 max-w-lg mx-auto w-full bg-blue-950/70 z-20 hover:scale-105">
+                <h3 className='text-md text-orange-700 font-bold'>01</h3>
+                <h4 className='text-sm font-extrabold text-orange-500'>
                   Bank-Grade Security:
                 </h4>
-                <p>
+                <p className='text-xs text-slate-400'>
                   Biometric logins (Face ID), 2FA, tokenization, and multi-party computation (MPC) key storage.
                 </p> 
               </div>
               
               
-              <div className="p-6 rounded-2xl shadow-xl max-w-lg mx-auto w-full bg-blue-950/70 z-20 hover:scale-105">
-                <h3 className='text-sm text-orange-600 font-bold'>02</h3>
-                <h4>
+              <div className="p-6 rounded-2xl shadow-xl border border-orange-500/40 transition-all duration-300 max-w-lg mx-auto w-full bg-blue-950/70 z-20 hover:scale-105">
+                <h3 className='text-md text-orange-700 font-bold'>02</h3>
+                <h4 className='text-sm font-extrabold text-orange-500'>
                   Zero / Ultra-Low Fees:
                 </h4>
-                <p>
+                <p className='text-xs text-slate-400'>
                   Free instant internal transfers and transparent foreign exchange rates.
                 </p> 
               </div>
         
-              <div className="p-6 rounded-2xl shadow-xl max-w-lg mx-auto w-full bg-blue-950/70 z-20 hover:scale-105">
-                <h3>03</h3>
-                <h4>
+              <div className="p-6 rounded-2xl shadow-xl border border-orange-500/40 transition-all duration-300 max-w-lg mx-auto w-full bg-blue-950/70 z-20 hover:scale-105">
+                <h3 className='text-md text-orange-700 font-bold'>03</h3>
+                <h4 className='text-sm font-extrabold text-orange-500'>
                   Global Access:
                 </h4>
-                <p>
+                <p className='text-xs text-slate-400'>
                   Borderless transactions with multi-currency ledgers and international acceptance.
                 </p> 
               </div>
 
-              <div className="p-6 rounded-2xl shadow-xl max-w-lg mx-auto w-full bg-blue-950/70 z-20 hover:scale-105">
-                <h3>04</h3>
-                <h4>
+              <div className="p-6 rounded-2xl shadow-xl border border-orange-500/40 transition-all duration-300 max-w-lg mx-auto w-full bg-blue-950/70 z-20 hover:scale-105">
+                <h3 className='text-md text-orange-700 font-bold'>04</h3>
+                <h4 className='text-sm font-extrabold text-orange-500'>
                  Cashback & Rewards: 
                 </h4>
-                <p>
+                <p className='text-xs text-slate-400'>
                   Earn rewards, loyalty points, or cashback on every transaction.
                 </p>
                  
@@ -238,13 +238,35 @@ function App() {
           </div>
         </div>
       </section>
-      <section id='pricing' className='py-24'>
+      <section id='pricing' className='py-24 px-4'>
         <div className='space-y-5'>
           <div className='py-2'>
             <div className='flex items-center justify-center mb-2 text-2xl font-extrabold text-slate-950/70 uppercase'>
               <h4>Pricing</h4>
             </div>
             <div className='max-w-xs mx-auto py-1 rounded-full bg-orange-600'></div>
+          </div>
+          <div>
+            <div className='grid grid-cols-2 gap-4'>
+              <div className="p-6 rounded-2xl shadow-xl border border-orange-500/40 transition-all duration-300 w-full bg-gradient-to-br from-blue-950/70 to-orange-600/30 z-20 hover:scale-105">
+                  <h4 className='font-bold text-orange-500'>Standard (Free):</h4>
+                  <ul className='font-medium text-slate-400'>
+                    <li>Basic wallet balance</li>
+                    <li>Virtual debit card</li>
+                    <li>Standard P2P transfer limits</li>
+                    <li>1.5% FX transaction fee</li>
+                  </ul>
+              </div>
+              <div className="p-6 rounded-2xl shadow-xl border border-orange-500/40 transition-all duration-300 w-full bg-gradient-to-bl from-orange-600/30 to-blue-950/70 z-20 hover:scale-105">
+                <h4 className='font-bold text-orange-500'>Premium ($4.99/month):</h4>
+                <ul className='font-medium text-slate-400'>
+                  <li>Higher daily transaction & withdrawal limits</li>
+                  <li>Free physical metal debit card</li>
+                  <li>Zero FX conversion fees on international transfers</li>
+                  <li>Priority 24/7 support & elevated cashback rates</li>
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
       </section>

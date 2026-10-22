@@ -22,11 +22,11 @@ export default function Profile() {
                         
                     </div>
                 </div>
-                <div className='grid grid-cols-2 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 p-4'>
-                    <div className='space-y-6'>
+                <div className='flex gap-4'>
+                    <div className='space-y-6 bg-slate-900 p-6 rounded-xl w-1/3 h-full'>
                         <div>
                             <label htmlFor="" className='block'>Full Name</label>
-                            <span>John Doe</span>
+                            <span id='full-name' className='font-medium text-slate-400'>John Doe</span>
                         </div>
                         <div>
                             <label htmlFor="" className='block'>Email</label>
@@ -37,7 +37,17 @@ export default function Profile() {
                             <span>+254700000000</span>
                         </div>
                     </div>
-                    <div></div>
+                    <div className="bg-slate-900 p-6 rounded-xl w-2/3 h-full hidden">
+                        <div>
+                            <form action="">
+                                <div>
+                                    <label htmlFor=""></label>
+                                </div>
+                            </form>
+                        </div>
+                        
+
+                    </div>
                 </div>
                     
                </div>

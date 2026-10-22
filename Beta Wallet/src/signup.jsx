@@ -9,6 +9,7 @@ const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
     email: '',
+    phoneNumber: '',
     password: '',
     confirmPassword: ''
 });
@@ -32,13 +33,14 @@ if(formData.password !== formData.confirmPassword){
     return;
 }
 setError("");
-console.log("submitted successfully", formData);
+alert("submitted successfully", formData);
 
 
 setFormData({
     firstName: '',
     lastName: '',
     email: '',
+    phoneNumber: '',
     password: '',
     confirmPassword: ''
 });
@@ -98,6 +100,18 @@ if (!isOpen) return null;
                                 onChange={handleChange}
                                 className="py-1 px-2 w-full rounded-2xl max-w-xl"
                             />
+                        </div>
+                        <div>
+                            <label htmlFor="phoneNumber" className="block text-md uppercase text-orange-600 my-2"Phone Number>Phone Number</label>
+                            <input 
+                                type="number"
+                                required id="phonenumber"
+                                name="phonenumber"
+                                placeholder="Phone Number"
+                                value={formData.phoneNumber}
+                                onChange={handleChange}
+                                className="py-1 px-2 w-full rounded-2xl max-w-xl"
+                             />
                         </div>
                         <div>
                             <label htmlFor="password" className="block text-md uppercase text-orange-600 my-2">Password</label>
