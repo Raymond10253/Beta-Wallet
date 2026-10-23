@@ -13,7 +13,7 @@ function App() {
   return (
     <>
      
-      <header className='absolute sticky top-0 left-0 right-0 z-50 border-b border-slate-100 bg-slate-900 py-7 px-3 flex justify-between backdrop-blur-md absolutel'>
+      <header className='absolute sticky top-0 left-0 right-0 z-50 border-b border-slate-100 bg-slate-900 py-7 px-3 flex justify-between backdrop-blur-md absolute space-x-3'>
         <div className='text-slate-300 text-2xl font-bold'>
           <div className='flex gap-6 pl-4'>
             
@@ -40,7 +40,7 @@ function App() {
             <a href="#pricing" className='text-orange-500 hover:text-orange-800 transition-all duration-300'>Pricing</a>
           </div>
         </div>
-        <div className='space-x-3 text-slate-300'>
+        <div className='space-x-3 text-slate-300 flex'>
           <button className=' transition-all duration-300 px-4 py-2 border border-orange-500 rounded-xl hover:bg-orange-600' onClick={() => setIsLoginOpen(true)}>LOG IN</button>
           <button className=' transition-all duration-300 px-4 py-2 bg-orange-500 rounded-xl hover:bg-orange-600' onClick={() => setIssigninOpen(true)}>SIGN UP</button>
         </div>
