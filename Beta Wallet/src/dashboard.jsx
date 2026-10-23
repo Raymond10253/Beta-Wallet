@@ -36,7 +36,7 @@ const renderContent = () => {
     return (
     <>
     <div className='flex'>
-        <aside className='relative w-[200px] bg-slate-900 border-r-2 border-orange-600 pt-16 flex flex-col justify-between z-50 inset-0 px-2'>
+        <aside className='sticky w-[200px] h-screen bg-slate-900 border-r-2 border-orange-600 pt-16 flex flex-col justify-between z-50 inset-0 px-2'>
             <div className='space-y-10'>
                 <div>
                     <a href="#dashboard" onClick={() => setActiveTab('dashboard')} className='border border-b border-transparent hover:border-b-orange-500/40 w-full flex space-x-3 px-2 py-1'>
