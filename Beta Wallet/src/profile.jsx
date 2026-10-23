@@ -1,14 +1,88 @@
+/*
 import React from 'react';
 import { useState } from 'react';
 import Login from './login';
 
 
 export default function Profile() {
-const [userName, setUserName] = useState('');
-const [email, setEmail] = useState('');
-const [phoneNumber, setPhoneNumber] = useState('');
-const [isHidden, setIsHidden] =useState(true);
+const profileForm = document.getElementById('profile-form')
+const userNameInput = document.getElementById('user-name')
+const emailInput = document.getElementById('email')
+const phoneNumberInput = document.getElementById('phonenumber')
 
+const displaySavedUsername = document.getElementById('display-saved-username');
+const displaySavedEmail = document.getElementById('display-saved-email');
+const displaySavedPhonenumber = document.getElementById('display-saved-phonenumber');
+
+let state = JSON.parse(localStorage.getItem('savingState')) || {
+    username: '',
+    email: '',
+    phonenumber: ''
+};
+function updateUI() {
+    displaySavedUsername.textContent = state.username ? `${state.username}` : '';
+    displaySavedEmail.textContent = state.email ? `${state.email}` : '';
+    displaySavedPhonenumber.textContent = state.phonenumber ? `${state.phonenumber}` : '';
+
+    localStorage.setItem('savingState', JSON.stringify(state));
+}
+
+profileForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const userN = userNameInput.value.trim();
+    const emailN = emailInput.value.trim();
+    const phoneN = phoneNumberInput.value.trim();
+
+    if (userN && emailN && phoneN) {
+        state.username = userN;
+        state.email = emailN;
+        state.phonenumber = phoneN;
+        updateUI();
+
+        userNameInput.value = '';
+        emailInput.value = '';
+        phoneNumberInput.value = ':'
+    }
+});
+*/
+
+import React, { useState, useEffect } from 'react';
+import Login from './login';
+
+export default function Profile() {
+    const [isHidden, setIsHidden] =useState(true);
+  // 1. Initialize state from localStorage or default values
+  const [state, setState] = useState(() => {
+    const saved = localStorage.getItem('savingState');
+    return saved ? JSON.parse(saved) : { username: '', email: '', phonenumber: '' };
+  });
+
+  // 2. Local state for form inputs
+  const [userN, setUserN] = useState('');
+  const [emailN, setEmailN] = useState('');
+  const [phoneN, setPhoneN] = useState('');
+
+  // 3. Sync state changes to localStorage
+  useEffect(() => {
+    localStorage.setItem('savingState', JSON.stringify(state));
+  }, [state]);
+
+  // 4. Handle form submission cleanly in React
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (userN.trim() && emailN.trim() && phoneN.trim()) {
+      setState({
+        username: userN.trim(),
+        email: emailN.trim(),
+        phonenumber: phoneN.trim(),
+      });
+
+      // Clear input fields
+      setUserN('');
+      setEmailN('');
+      setPhoneN('');
+    }
+  };
     
   return (
     <>
@@ -21,7 +95,7 @@ const [isHidden, setIsHidden] =useState(true);
                     </div>
                     <div>
                         <div>
-                           <span className='text-md font-extrabold text-black'>Welcome! {userName}</span> 
+                           <span className='text-md font-extrabold text-black'>Welcome! {state.username}</span> 
                         </div>
                     </div>
                 </div>
@@ -32,15 +106,15 @@ const [isHidden, setIsHidden] =useState(true);
                         </div>
                         <div>
                             <label htmlFor="" className='block text-orange-500 uppercase text-sm my-2'>Username</label>
-                            <span id='user-name' className='font-medium text-slate-400'>{userName}</span>
+                            <span id='display-saved-username' className='font-medium text-slate-400'>{state.username || 'Not set'}</span>
                         </div>
                         <div>
                             <label htmlFor="" className='block text-orange-500 uppercase text-sm my-2'>Email</label>
-                            <span id='email' className='font-medium text-slate-400'>{email}</span>
+                            <span id='display-saved-email' className='font-medium text-slate-400'>{state.email || 'Not set'}</span>
                         </div>
                         <div>
                             <label htmlFor="" className='block text-orange-500 uppercase text-sm my-2'>Phone Number</label>
-                            <span id='phone-number' className='font-medium text-slate-400'>{phoneNumber}</span>
+                            <span id='display-saved-phonenumber' className='font-medium text-slate-400'>{state.phonenumber || 'Not set'}</span>
                         </div>
 
                         <div>
@@ -54,16 +128,16 @@ const [isHidden, setIsHidden] =useState(true);
                         </button>
                     </div>
                         <div>
-                            <form action="" id='profileform' className='space-y-6'>
+                            <form onSubmit={handleSubmit} className='space-y-6'>
                                 <div>
                                     <label htmlFor="" className='block text-orange-500 uppercase text-sm my-2'>USERNAME</label>
                                     <input 
                                         type="text" 
-                                        required id="" 
+                                        required id="user-name" 
                                         name="userName"
                                         placeholder="UserName"
-                                        value={userName}
-                                        onChange={(e) => setUserName(e.target.value)}
+                                        value={userN}
+                                        onChange={(e) => setUserN(e.target.value)}
                                         className="py-1 px-2 w-full rounded-2xl text-grey-900" 
                                     />
                                 </div>
@@ -71,11 +145,11 @@ const [isHidden, setIsHidden] =useState(true);
                                     <label htmlFor=""  className='block text-orange-500 uppercase text-sm my-2'>EMAIL</label>
                                     <input 
                                         type="email" 
-                                        required id="" 
+                                        required id="email" 
                                         name="email"
                                         placeholder="email"
-                                        value={email}
-                                        onChange={(e) => setEmail(e.target.value)}
+                                        value={emailN}
+                                        onChange={(e) => setEmailN(e.target.value)}
                                         className="py-1 px-2 w-full rounded-2xl text-grey-900" 
                                     />
                                 </div>
@@ -83,21 +157,19 @@ const [isHidden, setIsHidden] =useState(true);
                                     <label htmlFor="" className='block text-orange-500 uppercase text-sm my-2'>PHONE NUMBER</label>
                                     <input 
                                         type="number" 
-                                        required id="" 
+                                        required id="phonenumber" 
                                         name="phoneNumber"
                                         placeholder="Phone Number"
-                                        value={phoneNumber}
+                                        value={phoneN}
+                                        onChange={(e) => setPhoneN(e.target.value)}
                                         maxLength={13}
-                                        onChange={(e) => setPhoneNumber(e.target.value)}
                                         className="py-1 px-2 w-full rounded-2xl text-grey-900" 
                                     />
                                 </div>
-                                <div className='max-w-full mx-auto my-3'>
-                                    <button type='submit' id='savebtn' className='w-full bg-orange-500 text-white text-md font-bold p-2 rounded-full'>
-                                        <span id='savetext'>SAVE</span>
-                                    </button>
-                                </div>
-                                
+                               
+                                <button type='submit' id='savebtn' className='max-w-full mx-auto my-3 w-full bg-orange-500 text-white text-md font-bold p-2 rounded-full'>
+                                    <span id='savetext'>SAVE</span>
+                                </button>
                             </form>
                         </div>
                         
