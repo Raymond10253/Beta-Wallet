@@ -57,7 +57,7 @@ export default function Overview() {
                 <header className='sticky bg-slate-900/70 flex top-0 backdrop-blur-md border-b border-slate-600/60 px-5 py-4 z-30'>
                     <div className='flex justify-between items-center w-full'>
                         <div className='space-x-3'>
-                            <i className='fa-solid fa-wallet text-2xl text-orange-600 bg-slate-600/50 p-4 my-2 rounded-2xl'></i>
+                            <i className='fa-solid fa-wallet text-2xl text-orange-600 bg-slate-600/50 p-4 rounded-2xl'></i>
                             <span className='font-bold text-xl uppercase text-slate-400'>Dashboard</span>
                         </div>
                         <div className='flex flex-col-3'>
