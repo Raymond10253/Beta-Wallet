@@ -57,7 +57,7 @@ export default function Overview() {
                 <header className='sticky bg-slate-900/70 flex top-0 backdrop-blur-md border-b border-slate-600/60 px-5 py-4 z-30'>
                     <div className='flex justify-between items-center w-full'>
                         <div className='space-x-3'>
-                            <i className='fa-solid fa-wallet text-2xl text-orange-600 bg-slate-600/50 p-4 my-2v rounded-2xl'></i>
+                            <i className='fa-solid fa-wallet text-2xl text-orange-600 bg-slate-600/50 p-4 my-2 rounded-2xl'></i>
                             <span className='font-bold text-xl uppercase text-slate-400'>Dashboard</span>
                         </div>
                         <div className='flex flex-col-3'>
@@ -68,7 +68,7 @@ export default function Overview() {
                             </div>
                             <div className='h-7 border border-black'></div>
                             <div className='px-4 flex space-x-3'>
-                                <div className='px-3 pt-2 pb-1 border border-orange-500 text-orange-500 rounded-full font-extrabold text-xs'>JD</div>
+                                <div className='h-10 w-10 flex items-center justify-center border border-orange-500 text-orange-500 rounded-full font-extrabold text-xs'>JD</div>
                                 <div>
                                     <h3 className='font-bold text-slate-400'>John Doe</h3>
                                     <h4 className='text-xs font-extrabold text-orange-500'>Premium account</h4>
@@ -90,13 +90,13 @@ export default function Overview() {
                                 <h2 className="text-2xl font-bold text-white mt-1">$10,120.50</h2>
                                 </div>
                                 <div className="flex items-center space-x-4 text-xs text-gray-400">
-                                <div className="flex items-center space-x-1.5">
+                                <div className='flex items-center space-x-1.5'>
                                     <span className="w-3 h-3 bg-emerald-500 rounded-full"></span>
-                                    <span>Deposits</span>
+                                    <span>Total Deposits <span>ksh.0</span></span>
                                 </div>
                                 <div className="flex items-center space-x-1.5">
                                     <span className="w-3 h-3 bg-rose-500 rounded-full"></span>
-                                    <span>Withdrawals</span>
+                                    <span>Total Withdrawals <span className='font-mono font-bold text-rose-400'>ksh.0</span></span>
                                 </div>
                                 </div>
                             </div>
@@ -165,7 +165,7 @@ export default function Overview() {
                 </section>
                 <section className='px-4 py-5'>
                     <div className='p-5 bg-slate-900/60 rounded-2xl'>
-                    <div className='flex justify-between px-2'>
+                    <div className='flex justify-between px-2 my-3'>
                         <div className='space-x-3'>
                             <i class="fa-solid fa-arrow-rotate-left text-orange-500 text-xl"></i>
                             <span className='font-bold'>Recent Transaction Logs</span>
@@ -174,10 +174,18 @@ export default function Overview() {
                             <a href="" className='text-orange-500 text-sm'>View All</a>
                         </div>
                     </div>
-                    <div>
-                        <ul>
-
-                        </ul>
+                    <div className='overflow-x-auto'>
+                        <table className='w-full text-left text-xs'>
+                            <thead>
+                                <tr className='border-b border-slate-400 text-slate-300 uppercase font-semibold'>
+                                    <th className='p-3'>type</th>
+                                    <th className='p-3'>method</th>
+                                    <th className='p-3'>amount</th>
+                                    <th className='p-3'>calculated balance</th>
+                                    <th className='p-3'>time logged</th>
+                                </tr>
+                            </thead>
+                        </table>
                     </div>
                     </div>
                 </section>

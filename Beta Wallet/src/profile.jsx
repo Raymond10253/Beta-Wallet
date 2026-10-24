@@ -86,19 +86,33 @@ export default function Profile() {
     
   return (
     <>
-            <div id='contact' className='rounded-2xl flex w-full h-full mx-3 p-5 border-2 border-black/20 z-20 shadow shadow-2xl bg-gradient-to-b from-blue-950/50 to-orange-700/50'>
-            <div className='w-full'>
-               <div className='space-y-6'>
-                <div className='flex flex-col-2 gap-3'>
-                    <div className='w-20 h-20 pb-3 rounded-full border border-orange-400 bg-orange-400 flex items-center justify-center'>
-                        <span className='text-3xl font-extrabold'>JD</span>
+            <div id='contact' className='flex w-full h-screen border-2 border-black/20 shadow shadow-2xl'>
+            
+               <div className='space-y-6 w-full'>
+                <header className='sticky bg-slate-900/70 backdrop-blur-md border-b border-slate-600/60 px-5 py-4 z-30'>
+                <div className='flex justify-between'>
+                    <div className='space-x-3'>
+                        <i className='fa-solid fa-circle-user text-orange-500 text-2xl p-3 bg-slate-600/60 rounded-2xl'></i>
+                        <span className='uppercase text-slate-400 text-xl font-bold'>Profile</span>
                     </div>
-                    <div>
+                    <div className='flex flex-col-2'>
                         <div>
-                           <span className='text-md font-extrabold text-black'>Welcome! {state.username}</span> 
+
                         </div>
+                        <div className='h-7 border border-black'></div>
+                        <div className='px-4 flex space-x-3'>
+                                    <div className='h-10 w-10 flex items-center justify-center border border-orange-500 text-orange-500 rounded-full font-extrabold text-xs'>JD</div>
+                                    <div>
+                                        <h3 className='font-bold text-slate-400'>{state.username}</h3>
+                                        <h4 className='text-xs font-extrabold text-orange-500'>Premium account</h4>
+                                    </div>
+                                </div>
                     </div>
                 </div>
+                
+                    
+                </header>
+                <section className='p-5'>
                 <div className='flex gap-4'>
                     <div className='space-y-6 bg-slate-900/50 p-6 rounded-xl w-1/3 h-full'>.
                         <div>
@@ -176,12 +190,13 @@ export default function Profile() {
 
                     </div>
                 </div>
+                </section>
                     
                </div>
                <div>
 
                </div>
-            </div>
+            
         </div>
     </>
   );
