@@ -1,20 +1,25 @@
 import { useState } from "react";
-import NavBar from "./dashboard";
+import {useNavigate} from "react-router-dom";
+
 
 function Login({isOpen, onClose}) {
+    const navigate = useNavigate();
     const [userForm, setUserForm] = useState({
         userName: '',
         password: ''
     });
 
     const handleUser = (e) =>{
-    const {name, value} =e.target;
-    setUserForm((prevData) =>({
-        ...prevData,
+    const {name, value} = e.target;
+    setUserForm((prev) =>({
+        ...prev,
         [name]: value
     }));
 };
-        
+const handleSubmit = (e) =>{
+    e.preventDefault();
+    navigate('/dashboard');
+}        
 
 
 if(!isOpen) return null;
@@ -32,13 +37,13 @@ if(!isOpen) return null;
                     <div className="flex items-center pb-4 border-b border-gray-200 mb-6 max-w-md w-full">
                         
                         
-                       <form className="space-y-4 flex flex-col w-full">
+                       <form className="space-y-4 flex flex-col w-full" onSubmit={handleSubmit}>
                         <div>
-                            <label htmlFor="password" className="block text-md uppercase text-orange-600 my-2">Username</label>
+                            <label htmlFor="username" className="block text-md uppercase text-orange-600 my-2">Username</label>
                             <input 
                             type="text" 
                             required id="username" 
-                            name="username"
+                            name="userName"
                             placeholder="username"
                             value={userForm.userName}
                             onChange={handleUser}
@@ -51,6 +56,7 @@ if(!isOpen) return null;
                             required id="password" 
                             maxLength={8}
                             placeholder="password"
+                            name="password"
                             value={userForm.password}
                             onChange={handleUser}
                             className="py-1 px-2 w-full rounded-2xl"/>

@@ -1,14 +1,17 @@
-import { StrictMode } from 'react'
+import React from 'react'
 import { createRoot } from 'react-dom/client'
+import { BrowserRouter } from 'react-router-dom'
 import './index.css'
 import App from './App.jsx'
-import NavBar from './dashboard.jsx'
+
 
 
 
 
 createRoot(document.getElementById('root')).render(
-  <StrictMode>   
-    <NavBar />
-  </StrictMode>,
-)
+  <React.StrictMode>
+  <BrowserRouter>
+    <App />
+  </BrowserRouter>
+  </React.StrictMode>
+);

@@ -1,11 +1,21 @@
 import { useState } from 'react'
+import { Routes, Route } from 'react-router-dom'
 import './App.css'
 import heroImage from 'C:/Users/HomePC/Desktop/My Projects/Bash-Wallet/Beta Wallet/src/assets/creditcard_background.jpg'
 import Login from './login'
 import Signup from './signup'
-
+import NavBar from './dashboard'
 
 function App() {
+  return (
+    <Routes>
+      <Route path='/' element={<HomePage />} />
+      <Route path='/dashboard' element={<NavBar />} />
+    </Routes>
+  )
+}
+
+function HomePage() {
   const [issigninOpen, setIssigninOpen] =useState(false)
   const [isLoginOpen, setIsLoginOpen] =useState(false)
   

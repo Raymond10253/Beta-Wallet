@@ -11,26 +11,19 @@ import Contact from './Contact';
 
 export default function NavBar() {
 const [activeTab, setActiveTab] = useState('dashboard')
-const renderContent = () => {
-    switch (activeTab) {
-    case 'dashboard':
-        return <Overview />;
-    case 'profile':
-        return <Profile />;
-    case 'deposit':
-        return <Deposit />;
-    case 'withdraw':
-        return <Withdraw />;
-    case 'transfer':
-        return <Transfer />;
-    case 'setting':
-        return <Setting />;
-    case 'contact':
-        return <Contact />;
-    default:
-        return <Overview />;
-} 
-}
+
+const tabContent = {
+    dashboard: <Overview />,
+    profile: <Profile />,
+    deposit: <Deposit />,
+    withdraw: <Withdraw />,
+    transfer: <Transfer />,
+    setting: <Setting />,
+    contact: <Contact />
+};
+
+const renderContent = () => tabContent[activeTab] || <Overview />;
+    
 
 
     return (

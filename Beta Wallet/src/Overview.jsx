@@ -87,7 +87,7 @@ export default function Overview() {
                             <div className="flex justify-between items-center mb-6">
                                 <div>
                                 <h3 className="text-gray-400 text-sm">Deposit & Withdrawal Analytics</h3>
-                                <h2 className="text-2xl font-bold text-white mt-1">$10,120.50</h2>
+                                <h2 className="text-2xl font-bold text-white mt-1">Ksh.0</h2>
                                 </div>
                                 <div className="flex items-center space-x-4 text-xs text-gray-400">
                                 <div className='flex items-center space-x-1.5'>

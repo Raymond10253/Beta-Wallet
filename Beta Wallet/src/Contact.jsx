@@ -1,11 +1,11 @@
 export default function Contact() {
     return(
         <>
-            <div id='contact' className='relative flex w-full h-full p-5 border-2 border-black/20 z-20 shadow shadow-2xl bg-gradient-to-b from-blue-950/50 to-orange-700/50'>
-            <header>
+        <div>
 
-            </header>
+        
             <section>
+            <div id='contact' className='relative rounded-2xl flex w-full h-full p-5 border-2 border-black/20 z-20 shadow shadow-2xl bg-gradient-to-b from-blue-950/50 to-orange-700/50'>
                 <div className='w-full'>
                     <form action="" className='space-y-10'>
                         <div className='grid grid-cols-2 md:grid-cols-2 sm:grid-cols-1 lg:grid-cols-2 gap-4'>
@@ -15,7 +15,7 @@ export default function Contact() {
                             </div>
                             <div>
                                 <label htmlFor="" className="block text-md font-medium uppercase text-orange-600 my-2">email</label>
-                                            <input type="email" required placeholder="e.g..johndoe@gmail.com" className='mt-4 px-2 py-3 rounded-xl w-full'/>
+                                <input type="email" required placeholder="e.g..johndoe@gmail.com" className='mt-4 px-2 py-3 rounded-xl w-full'/>
                             </div>  
                         </div>
                         
@@ -37,10 +37,9 @@ export default function Contact() {
                         </div>
                     </form> 
                 </div> 
+            </div>
             </section>
-            <footer className="py-5 bg-slate-900/60 z-20">
-
-            </footer>
+    
             
         </div>
         </>
