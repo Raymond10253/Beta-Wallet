@@ -193,7 +193,12 @@ export default function Overview() {
                                 ) : [...transactionsWithBalances].reverse().map((transaction) => (
                                     <tr key={transaction.id} className="border-b border-slate-700 text-slate-300">
                                         <td className="p-3 capitalize">{transaction.type}</td>
-                                        <td className="p-3 capitalize">{transaction.method || '—'}</td>
+                                        <td className="p-3 capitalize">
+                                            {transaction.method || '—'}
+                                            {transaction.paymentDetail && (
+                                                <span className="block text-xs normal-case text-slate-400">{transaction.paymentDetail}</span>
+                                            )}
+                                        </td>
                                         <td className="p-3">{formatAmount(transaction.amount)}</td>
                                         <td className="p-3">{formatAmount(transaction.balance)}</td>
                                         <td className="p-3">{new Date(transaction.date).toLocaleString()}</td>

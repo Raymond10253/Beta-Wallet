@@ -4,10 +4,18 @@ import { recordWithdrawal } from './transactions';
 export default function Withdraw() {
     const [amount, setAmount] = useState('');
     const [method, setMethod] = useState('');
-    const [account, setAccount] = useState('');
+   // const [account, setAccount] = useState('');
     const [message, setMessage] = useState('');
     const [error, setError] = useState('');
+    const [paymentDetail, setPaymentDetail] = useState('');
 
+    const paymentDetailFields = {
+        bank: { label: 'Bank account number', placeholder: 'Enter bank account number', type: 'text' },
+        crypto: { label: 'Wallet address', placeholder: 'Enter cryptocurrency wallet address', type: 'text' },
+        paypal: { label: 'PayPal email address', placeholder: 'Enter PayPal email address', type: 'email' },
+        other: { label: 'M-Pesa phone number', placeholder: 'Enter M-Pesa phone number', type: 'tel' },
+    };
+    const selectedPaymentField = paymentDetailFields[method];
     const handleSubmit = (event) => {
         event.preventDefault();
 
@@ -18,8 +26,8 @@ export default function Withdraw() {
             return;
         }
 
-        if (!method || !account.trim()) {
-            setError('Select a withdrawal method and enter the account number.');
+        if (!method || !paymentDetail.trim()) {
+            setError('Select a withdrawal method and enter the payment detail.');
             setMessage('');
             return;
         }
@@ -28,7 +36,7 @@ export default function Withdraw() {
             recordWithdrawal(parsedAmount, method);
             setAmount('');
             setMethod('');
-            setAccount('');
+            setPaymentDetail('');
             setError('');
             setMessage('Withdrawal recorded.');
         } catch (submitError) {
@@ -48,7 +56,7 @@ export default function Withdraw() {
         <header className="py-10 sticky bg-slate-900">
 
         </header>
-        <section className="p-5">
+        <section className="p-5 max-w-3xl mx-auto border border-black rounded-xl bg-gradient-to-b from-blue-950/50 to-orange-700/50 z-30 shadow shadow-xl my-10">
             <div className="flex justify-between items-center mb-6">
                 <h2 className="text-2xl font-bold text-white uppercase">Withdraw</h2>
             </div>
@@ -73,7 +81,12 @@ export default function Withdraw() {
                         <select
                             id="method"
                             value={method}
-                            onChange={(event) => setMethod(event.target.value)}
+                            onChange={(event) => {
+                                setMethod(event.target.value);
+                                setPaymentDetail('');
+                                setError('');
+                                setMessage(''); 
+                            }}
                             className="w-full px-2 py-3 rounded-xl"
                             required
                         >
@@ -84,18 +97,23 @@ export default function Withdraw() {
                             <option value="other">Mpesa</option>
                         </select>
                     </div>
-                    <div>
-                        <label htmlFor="account" className="block text-white mb-2">Account Number</label>
-                        <input
-                            type="text"
-                            id="account"
-                            value={account}
-                            onChange={(event) => setAccount(event.target.value)}
-                            placeholder="Enter account number"
-                            className="w-full px-2 py-3 rounded-xl"
-                            required
-                        />
-                    </div>
+                    {selectedPaymentField && (
+                        <div>
+                            <label htmlFor="paymentDetail" className="block text-white mb-2">
+                                {selectedPaymentField.label}
+                            </label>
+                            <input
+                                type={selectedPaymentField.type}
+                                id="paymentDetail"
+                                value={paymentDetail}
+                                onChange={(event) => setPaymentDetail(event.target.value)}
+                                placeholder={selectedPaymentField.placeholder}
+                                className="w-full px-2 py-3 rounded-xl"
+                                required
+                            />
+                        </div>
+                    )}
+                    
                     <div className="mt-4">
                         <button type="submit" className="bg-orange-600 hover:bg-orange-700 w-full uppercase font-medium rounded-2xl py-2">Withdraw</button>
                     </div>
@@ -104,7 +122,6 @@ export default function Withdraw() {
                 </form>
             </div>
         </section>
-        
         </div>  
     </>
     )

@@ -114,7 +114,7 @@ export default function Profile() {
                 </header>
                 <section className='p-5'>
                 <div className='flex gap-4'>
-                    <div className='space-y-6 bg-slate-900/50 p-6 rounded-xl w-1/3 h-full'>.
+                    <div className='space-y-6 bg-gradient-to-b from-blue-950/50 to-orange-700/50 p-6 rounded-xl w-1/3 h-full'>.
                         <div>
                             <h3 className='text-xl font-bold bg-gradient-to-br from-orange-600 via-blue-300 to-indigo-700 bg-clip-text text-transparent underline'>Profile details</h3>
                         </div>
@@ -135,7 +135,7 @@ export default function Profile() {
                             <button className='w-full bg-orange-500 p-1 rounded-xl text-white font-bold' onClick={() => setIsHidden(false)}>EDIT PROFILE</button>
                         </div>
                     </div>
-                    <div className="bg-slate-900/50 p-6 rounded-xl w-2/3 h-full" hidden={isHidden}>
+                    <div className="bg-gradient-to-b from-blue-950/50 to-orange-700/50 p-6 rounded-xl w-2/3 h-full" hidden={isHidden}>
                         <div>
                         <button className="text-gray-500 hover:text-gray-700" onClick={() => setIsHidden(true)}>
                             <i className="fa-solid fa-xmark"></i>

@@ -15,13 +15,14 @@ export function getTransactions() {
   return transactions;
 }
 
-function recordTransaction(type, amount, method) {
+function recordTransaction(type, amount, method, paymentDetail) {
   const transactions = getTransactions();
   const transaction = {
     id: Date.now(),
     type,
     amount,
     method,
+    ...(paymentDetail ? { paymentDetail } : {}),
     date: new Date().toISOString(),
   };
 
@@ -33,11 +34,11 @@ function recordTransaction(type, amount, method) {
   return transaction;
 }
 
-export function recordDeposit(amount, method) {
-  return recordTransaction('deposit', amount, method);
+export function recordDeposit(amount, method, paymentDetail) {
+  return recordTransaction('deposit', amount, method, paymentDetail);
 }
 
-export function recordWithdrawal(amount, method) {
+export function recordWithdrawal(amount, method, paymentDetail) {
   const transactions = getTransactions();
   const balance = transactions.reduce(
     (total, transaction) => total + (transaction.type === 'deposit' ? transaction.amount : -transaction.amount),

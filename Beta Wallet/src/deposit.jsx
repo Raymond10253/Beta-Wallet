@@ -5,8 +5,17 @@ import { recordDeposit } from './transactions';
 export default function Deposit() {
   const [amount, setAmount] = useState('');
   const [method, setMethod] = useState('');
+  const [paymentDetail, setPaymentDetail] = useState('');
   const [message, setMessage] = useState('');
   const [error, setError] = useState('');
+
+  const paymentDetailFields = {
+    bank: { label: 'Bank account number', placeholder: 'Enter bank account number', type: 'text' },
+    crypto: { label: 'Wallet address', placeholder: 'Enter cryptocurrency wallet address', type: 'text' },
+    paypal: { label: 'PayPal email address', placeholder: 'Enter PayPal email address', type: 'email' },
+    other: { label: 'M-Pesa phone number', placeholder: 'Enter M-Pesa phone number', type: 'tel' },
+  };
+  const selectedPaymentField = paymentDetailFields[method];
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -18,16 +27,17 @@ export default function Deposit() {
       return;
     }
 
-    if (!method) {
-      setError('Select a deposit method.');
+    if (!method || !paymentDetail.trim()) {
+      setError('Select a deposit method and enter its payment details.');
       setMessage('');
       return;
     }
 
     try {
-      recordDeposit(parsedAmount, method);
+      recordDeposit(parsedAmount, method, paymentDetail.trim());
       setAmount('');
       setMethod('');
+      setPaymentDetail('');
       setError('');
       setMessage('Deposit recorded.');
     } catch (submitError) {
@@ -43,9 +53,9 @@ export default function Deposit() {
       <header className="py-10 sticky bg-slate-900">
 
       </header>
-      <section className="p-5 max-w-3xl mx-auto border border-black rounded-xl bg-slate-900/50 z-30 shadow shadow-xl my-10">
+      <section className="p-5 max-w-3xl mx-auto border border-black rounded-xl bg-gradient-to-b from-blue-950/50 to-orange-700/50 z-30 shadow shadow-xl my-10">
         <div className="flex justify-between items-center mb-6">
-          <h2 className="text-2xl font-bold text-orange-500 uppercase">Deposit</h2>
+          <h2 className="text-3xl font-semibold text-orange-500 uppercase">Deposit</h2>
         </div>
         <div>
           <form onSubmit={handleSubmit} className="space-y-4">
@@ -68,8 +78,13 @@ export default function Deposit() {
               <select
                 id="method"
                 value={method}
-                onChange={(event) => setMethod(event.target.value)}
-                className="w-full px-4 py-3 rounded-xl bg-slate-800/80 text-slate-300 font-aria"
+                onChange={(event) => {
+                  setMethod(event.target.value);
+                  setPaymentDetail('');
+                  setError('');
+                  setMessage('');
+                }}
+                className="w-full px-4 py-3 rounded-xl bg-slate-800/80 text-slate-300 font-aria uppercase text-xs"
                 required
               >
                 <option value="">Select method</option>
@@ -79,8 +94,24 @@ export default function Deposit() {
                 <option value="other">Mpesa</option>
               </select>
             </div>
+            {selectedPaymentField && (
+              <div>
+                <label htmlFor="paymentDetail" className="block text-orange-600 text-sm uppercase font-bold mb-2">
+                  {selectedPaymentField.label}
+                </label>
+                <input
+                  type={selectedPaymentField.type}
+                  id="paymentDetail"
+                  value={paymentDetail}
+                  onChange={(event) => setPaymentDetail(event.target.value)}
+                  placeholder={selectedPaymentField.placeholder}
+                  className="w-full px-2 py-3 rounded-xl"
+                  required
+                />
+              </div>
+            )}
             <div className="mt-4">
-              <button type="submit" className="bg-orange-600 hover:bg-orange-700 w-full uppercase font-medium rounded-2xl p-2 text-slate-300 font-bold">Deposit</button>
+              <button type="submit" className="bg-orange-600 hover:bg-orange-700 w-full uppercase font-medium rounded-2xl p-2 text-white">Deposit</button>
             </div>
             {message && <p role="status" className="text-emerald-400">{message}</p>}
             {error && <p role="alert" className="text-rose-400">{error}</p>}
