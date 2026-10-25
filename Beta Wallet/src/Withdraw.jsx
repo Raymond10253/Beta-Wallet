@@ -58,12 +58,12 @@ export default function Withdraw() {
         </header>
         <section className="p-5 max-w-3xl mx-auto border border-black rounded-xl bg-gradient-to-b from-blue-950/50 to-orange-700/50 z-30 shadow shadow-xl my-10">
             <div className="flex justify-between items-center mb-6">
-                <h2 className="text-2xl font-bold text-white uppercase">Withdraw</h2>
+                <h2 className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-br from-orange-600 via-blue-300 to-indigo-700 uppercase">Withdraw</h2>
             </div>
             <div>
                 <form onSubmit={handleSubmit} className="space-y-4">
                     <div>
-                        <label htmlFor="amount" className="block text-white mb-2">Amount</label>
+                        <label htmlFor="amount" className="block text-orange-600 text-sm uppercase font-bold mb-2">Amount</label>
                         <input
                             type="number"
                             id="amount"
@@ -77,7 +77,7 @@ export default function Withdraw() {
                         />
                     </div>
                     <div>
-                        <label htmlFor="method" className="block text-white mb-2">Withdrawal Method</label>
+                        <label htmlFor="method" className="block text-orange-600 text-sm uppercase font-bold mb-2">Withdrawal Method</label>
                         <select
                             id="method"
                             value={method}
@@ -99,7 +99,7 @@ export default function Withdraw() {
                     </div>
                     {selectedPaymentField && (
                         <div>
-                            <label htmlFor="paymentDetail" className="block text-white mb-2">
+                            <label htmlFor="paymentDetail" className="block text-orange-600 text-sm uppercase font-bold mb-2">
                                 {selectedPaymentField.label}
                             </label>
                             <input

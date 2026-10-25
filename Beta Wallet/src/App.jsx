@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, useNavigate } from 'react-router-dom'
 import './App.css'
 import heroImage from 'C:/Users/HomePC/Desktop/My Projects/Bash-Wallet/Beta Wallet/src/assets/creditcard_background.jpg'
 import Login from './login'
@@ -10,14 +10,21 @@ function App() {
   return (
     <Routes>
       <Route path='/' element={<HomePage />} />
-      <Route path='/dashboard' element={<NavBar />} />
+      <Route path='/dashboard' element={<NavBar userName={localStorage.getItem('betaWalletUserName') || 'John Doe'} />} />
     </Routes>
   )
 }
 
 function HomePage() {
+  const navigate = useNavigate()
   const [issigninOpen, setIssigninOpen] =useState(false)
   const [isLoginOpen, setIsLoginOpen] =useState(false)
+
+  const handleLogin = (userName) => {
+    localStorage.setItem('betaWalletUserName', userName)
+    setIsLoginOpen(false)
+    navigate('/dashboard')
+  }
   
 
   return (
@@ -288,6 +295,7 @@ function HomePage() {
         <Login 
           isOpen = {isLoginOpen}
           onClose ={() => setIsLoginOpen(false)}
+          onLogin={handleLogin}
         />
       </main>
     </>

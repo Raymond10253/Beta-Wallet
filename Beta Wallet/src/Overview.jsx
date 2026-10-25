@@ -9,7 +9,7 @@ import {
   ResponsiveContainer,
 } from 'recharts';
 
-export default function Overview() {
+export default function Overview({ userName = 'John Doe' }) {
   const [transactionState] = useState(() => {
     try {
       return { transactions: getTransactions(), error: '' };
@@ -64,9 +64,9 @@ export default function Overview() {
                             </div>
                             <div className='h-7 border border-black'></div>
                             <div className='px-4 flex space-x-3'>
-                                <div className='h-10 w-10 flex items-center justify-center border border-orange-500 text-orange-500 rounded-full font-extrabold text-xs'>JD</div>
+                            <div className='h-10 w-10 flex items-center justify-center border border-orange-500 text-orange-500 rounded-full font-extrabold text-xs'>{userName.split(' ').map((part) => part[0]).join('').slice(0, 2).toUpperCase() || 'JD'}</div>
                                 <div>
-                                    <h3 className='font-bold text-slate-400'>John Doe</h3>
+                                <h3 className='font-bold text-slate-400'>{userName}</h3>
                                     <h4 className='text-xs font-extrabold text-orange-500'>Premium account</h4>
                                 </div>
                             </div>
@@ -75,7 +75,7 @@ export default function Overview() {
                 </header>
                 <section className='px-4 py-10'>
                 <div className='my-5 text-orange-500 font-bold'>
-                    <span>Welcome! John Doe</span>
+                    <span>Welcome! {userName}</span>
                 </div>
                 <div>
                     <div className="p-3 w-full rounded-xl border border-black/20 shadow shadow-xl bg-gradient-to-b from-blue-950/50 via-orange-950/50 to-orange-500/50">

@@ -1,9 +1,7 @@
 import { useState } from "react";
-import {useNavigate} from "react-router-dom";
 
 
-function Login({isOpen, onClose}) {
-    const navigate = useNavigate();
+function Login({ isOpen, onClose, onLogin }) {
     const [userForm, setUserForm] = useState({
         userName: '',
         password: ''
@@ -18,7 +16,15 @@ function Login({isOpen, onClose}) {
 };
 const handleSubmit = (e) =>{
     e.preventDefault();
-    navigate('/dashboard');
+    const trimmedUserName = userForm.userName.trim();
+
+    if (!trimmedUserName) {
+        return;
+    }
+
+    if (onLogin) {
+        onLogin(trimmedUserName);
+    }
 }        
 
 

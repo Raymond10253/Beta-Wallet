@@ -8,16 +8,16 @@ import Setting from './Setting';
 import Contact from './Contact';
 
 
-export default function NavBar() {
+export default function NavBar({ userName = 'John Doe' }) {
 const [activeTab, setActiveTab] = useState('dashboard')
 
 const tabContent = {
-    dashboard: <Overview />,
-    profile: <Profile />,
-    deposit: <Deposit />,
-    withdraw: <Withdraw />,
-    setting: <Setting />,
-    contact: <Contact />
+    dashboard: <Overview userName={userName} />,
+    profile: <Profile userName={userName} />,
+    deposit: <Deposit userName={userName} />,
+    withdraw: <Withdraw userName={userName} />,
+    setting: <Setting userName={userName} />,
+    contact: <Contact userName={userName} />
 };
 
 const renderContent = () => tabContent[activeTab] || <Overview />;
