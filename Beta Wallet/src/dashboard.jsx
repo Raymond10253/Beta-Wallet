@@ -4,7 +4,6 @@ import Overview from './Overview';
 import Profile from './profile';
 import Deposit from './deposit';
 import Withdraw from './Withdraw';
-import Transfer from './Transfer';
 import Setting from './Setting';
 import Contact from './Contact';
 
@@ -17,7 +16,6 @@ const tabContent = {
     profile: <Profile />,
     deposit: <Deposit />,
     withdraw: <Withdraw />,
-    transfer: <Transfer />,
     setting: <Setting />,
     contact: <Contact />
 };
@@ -60,13 +58,7 @@ const renderContent = () => tabContent[activeTab] || <Overview />;
                     </a>
                     
                 </div>
-                <div>
-                    <a href="#transfer" onClick={() => setActiveTab('transfer')} className='border border-b border-transparent hover:border-b-orange-500/40 w-full flex space-x-3 px-2 py-1'>
-                        <i class="fa-solid fa-arrow-right-arrow-left text-lg text-orange-500"></i>
-                        <span className='text-orange-500/60'>Transfers</span>
-                    </a>
-                    
-                </div>
+                
                 <div className='border-t border-orange-500 w-full my-2'></div>
                 <div className='mb-2'>
                     <div>

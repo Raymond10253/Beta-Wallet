@@ -1,9 +1,41 @@
-import React, {useState} from "react";
-
+import { useState } from "react";
+import { recordDeposit } from './transactions';
 
 
 export default function Deposit() {
   const [amount, setAmount] = useState('');
+  const [method, setMethod] = useState('');
+  const [message, setMessage] = useState('');
+  const [error, setError] = useState('');
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    const parsedAmount = Number(amount);
+    if (!Number.isFinite(parsedAmount) || parsedAmount <= 0) {
+      setError('Enter an amount greater than zero.');
+      setMessage('');
+      return;
+    }
+
+    if (!method) {
+      setError('Select a deposit method.');
+      setMessage('');
+      return;
+    }
+
+    try {
+      recordDeposit(parsedAmount, method);
+      setAmount('');
+      setMethod('');
+      setError('');
+      setMessage('Deposit recorded.');
+    } catch (submitError) {
+      console.error('Unable to record deposit:', submitError);
+      setError('Unable to save this deposit. Please try again.');
+      setMessage('');
+    }
+  };
 
   return (
     <>
@@ -11,19 +43,35 @@ export default function Deposit() {
       <header className="py-10 sticky bg-slate-900">
 
       </header>
-      <section className="p-5">
+      <section className="p-5 max-w-3xl mx-auto border border-black rounded-xl bg-slate-900/50 z-30 shadow shadow-xl my-10">
         <div className="flex justify-between items-center mb-6">
-          <h2 className="text-2xl font-bold text-white uppercase">Deposit</h2>
+          <h2 className="text-2xl font-bold text-orange-500 uppercase">Deposit</h2>
         </div>
         <div>
-          <form action="">
+          <form onSubmit={handleSubmit} className="space-y-4">
             <div>
-              <label htmlFor="amount" className="block text-white mb-2">Amount</label>
-              <input type="text" id="amount" placeholder="Enter amount" className="w-full px-2 py-3 rounded-xl"/>
+              <label htmlFor="amount" className="block text-orange-600 text-sm uppercase font-bold mb-2">Amount</label>
+              <input
+                type="number"
+                id="amount"
+                min="0.01"
+                step="0.01"
+                value={amount}
+                onChange={(event) => setAmount(event.target.value)}
+                placeholder="Enter amount"
+                className="w-full px-2 py-3 rounded-xl"
+                required
+              />
             </div>
             <div>
-              <label htmlFor="method" className="block text-white mb-2">Deposit Method</label>
-              <select id="method" className="w-full px-2 py-3 rounded-xl">
+              <label htmlFor="method" className="block text-orange-600 text-sm uppercase font-bold mb-2">Deposit Method</label>
+              <select
+                id="method"
+                value={method}
+                onChange={(event) => setMethod(event.target.value)}
+                className="w-full px-4 py-3 rounded-xl bg-slate-800/80 text-slate-300 font-aria"
+                required
+              >
                 <option value="">Select method</option>
                 <option value="bank">Bank Transfer</option>
                 <option value="crypto">Cryptocurrency</option>
@@ -32,8 +80,10 @@ export default function Deposit() {
               </select>
             </div>
             <div className="mt-4">
-              <button type="submit" className="bg-orange-600 hover:bg-orange-700 w-full uppercase font-medium rounded-2xl py-1">Deposit</button>
+              <button type="submit" className="bg-orange-600 hover:bg-orange-700 w-full uppercase font-medium rounded-2xl p-2 text-slate-300 font-bold">Deposit</button>
             </div>
+            {message && <p role="status" className="text-emerald-400">{message}</p>}
+            {error && <p role="alert" className="text-rose-400">{error}</p>}
           </form>
         </div>
       </section>

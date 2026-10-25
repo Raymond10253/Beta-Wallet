@@ -1,55 +1,51 @@
-import React from 'react';
 import { useState } from 'react';
-import Deposit from './deposit';
-import Withdraw from './Withdraw';
+import { getTransactions } from './transactions';
 import { 
   AreaChart, 
   Area, 
   XAxis, 
   YAxis, 
   Tooltip, 
-  ResponsiveContainer, 
-  CartesianGrid 
+  ResponsiveContainer,
 } from 'recharts';
 
-
-
-
-
-
 export default function Overview() {
-  const [isDepositOpen, setIsDepositOpen] =useState(false)
-  const [isWithdrawOpen, setIsWithdrrawOpen] =useState(false)
-    
-  const [transactions, setTransactions] = useState([
-    { id: 1, type: 'deposit', amount: 5000, date: new Date() }
-  ]);
-
-  
-  const handleNewTransaction = (type, amount) => {
-    const newTx = {
-      id: Date.now(),
-      type,
-      amount: parseFloat(amount) || 0,
-      date: new Date()
-    };
-    setTransactions((prev) => [...prev, newTx]);
-  };
-
-  
-  const chartData = transactions.map((tx, index, arr) => {
-    const runningBalance = arr
-      .slice(0, index + 1)
-      .reduce((acc, curr) => (curr.type === 'deposit' ? acc + curr.amount : acc - curr.amount), 0);
-
-    const dateObj = tx.date instanceof Date ? tx.date : new Date(tx.date);
-
-    return {
-      time: dateObj.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
-      balance: runningBalance,
-      type: tx.type,
-    };
+  const [transactionState] = useState(() => {
+    try {
+      return { transactions: getTransactions(), error: '' };
+    } catch (error) {
+      console.error('Unable to load transactions:', error);
+      return { transactions: [], error: 'Unable to load transaction history.' };
+    }
   });
+  const { transactions, error: transactionError } = transactionState;
+
+  const balanceSummary = transactions.reduce(
+    (summary, transaction) => {
+      const balance = summary.balance
+        + (transaction.type === 'deposit' ? transaction.amount : -transaction.amount);
+      return {
+        balance,
+        transactions: [...summary.transactions, { ...transaction, balance }],
+      };
+    },
+    { balance: 0, transactions: [] },
+  );
+  const runningBalance = balanceSummary.balance;
+  const transactionsWithBalances = balanceSummary.transactions;
+  const totalDeposits = transactions
+    .filter((transaction) => transaction.type === 'deposit')
+    .reduce((total, transaction) => total + transaction.amount, 0);
+  const totalWithdrawals = transactions
+    .filter((transaction) => transaction.type === 'withdrawal')
+    .reduce((total, transaction) => total + transaction.amount, 0);
+  const chartData = transactionsWithBalances.map((transaction) => ({
+    time: new Date(transaction.date).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+    balance: transaction.balance,
+    type: transaction.type,
+  }));
+  const formatAmount = (amount) => `Ksh.${amount.toLocaleString('en-KE', { maximumFractionDigits: 2 })}`;
+
     return(
         <>
             
@@ -87,16 +83,16 @@ export default function Overview() {
                             <div className="flex justify-between items-center mb-6">
                                 <div>
                                 <h3 className="text-gray-400 text-sm">Deposit & Withdrawal Analytics</h3>
-                                <h2 className="text-2xl font-bold text-white mt-1">Ksh.0</h2>
+                                <h2 className="text-2xl font-bold text-white mt-1">{formatAmount(runningBalance)}</h2>
                                 </div>
                                 <div className="flex items-center space-x-4 text-xs text-gray-400">
                                 <div className='flex items-center space-x-1.5'>
                                     <span className="w-3 h-3 bg-emerald-500 rounded-full"></span>
-                                    <span>Total Deposits <span>ksh.0</span></span>
+                                    <span>Total Deposits <span className='font-mono font-bold text-green-500'>{formatAmount(totalDeposits)}</span></span>
                                 </div>
                                 <div className="flex items-center space-x-1.5">
                                     <span className="w-3 h-3 bg-rose-500 rounded-full"></span>
-                                    <span>Total Withdrawals <span className='font-mono font-bold text-rose-400'>ksh.0</span></span>
+                                    <span>Total Withdrawals <span className='font-mono font-bold text-rose-400'>{formatAmount(totalWithdrawals)}</span></span>
                                 </div>
                                 </div>
                             </div>
@@ -116,7 +112,7 @@ export default function Overview() {
                                     <XAxis dataKey="time" stroke="#9ca3af" />
                                     <YAxis stroke="#9ca3af" />
                                     <Tooltip contentStyle={{ backgroundColor: '#111827', borderColor: '#374151' }} />
-                                    <Area type="monotone" dataKey="balance" stroke="#f97316" fillOpacity={1} fill="url(#colorBalance)" />
+                                    <Area type="linear" dataKey="balance" stroke="#f97316" fillOpacity={1} fill="url(#colorBalance)" />
                                     </AreaChart>
                                 </ResponsiveContainer>
                             </div>
@@ -134,7 +130,7 @@ export default function Overview() {
                                 <div className='p-5 border border-slate-800 w-full rounded-2xl bg-slate-900/50'>
                                     <h4 className='text-orange-500 font-bold'>Available balance</h4>
                                     <div className='flex justify-between my-2'>
-                                        <span className='text-2xl font-bold text-slate-400'>ksh.0</span>
+                                        <span className='text-2xl font-bold text-slate-400'>{formatAmount(runningBalance)}</span>
                                         <span className='p-4 border border-orange-500 rounded-3xl'>
                                             <i className='fa-solid fa-check text-orange-500'></i>
                                         </span>
@@ -152,7 +148,7 @@ export default function Overview() {
                                 <div className='p-5 border border-slate-800 w-full rounded-2xl bg-slate-900/50'>
                                     <h4 className='text-orange-500 font-bold'>Transactions</h4>
                                     <div className='flex justify-between my-2'>
-                                        <span className='text-2xl font-bold text-slate-400'>0</span>
+                                        <span className='text-2xl font-bold text-slate-400'>{transactions.length}</span>
                                         <span className='p-4 border border-orange-500 rounded-3xl'>
                                             <i className='fa-solid fa-list-check text-orange-500'></i>
                                         </span>
@@ -171,7 +167,7 @@ export default function Overview() {
                             <span className='font-bold'>Recent Transaction Logs</span>
                         </div>
                         <div>
-                            <a href="" className='text-orange-500 text-sm'>View All</a>
+                            <span className='text-orange-500 text-sm'>{transactions.length} total</span>
                         </div>
                     </div>
                     <div className='overflow-x-auto'>
@@ -185,6 +181,25 @@ export default function Overview() {
                                     <th className='p-3'>time logged</th>
                                 </tr>
                             </thead>
+                            <tbody>
+                                {transactionError ? (
+                                    <tr>
+                                        <td colSpan="5" className="p-3 text-rose-400">{transactionError}</td>
+                                    </tr>
+                                ) : transactionsWithBalances.length === 0 ? (
+                                    <tr>
+                                        <td colSpan="5" className="p-3 text-slate-400">No transactions yet. Make a deposit to get started.</td>
+                                    </tr>
+                                ) : [...transactionsWithBalances].reverse().map((transaction) => (
+                                    <tr key={transaction.id} className="border-b border-slate-700 text-slate-300">
+                                        <td className="p-3 capitalize">{transaction.type}</td>
+                                        <td className="p-3 capitalize">{transaction.method || '—'}</td>
+                                        <td className="p-3">{formatAmount(transaction.amount)}</td>
+                                        <td className="p-3">{formatAmount(transaction.balance)}</td>
+                                        <td className="p-3">{new Date(transaction.date).toLocaleString()}</td>
+                                    </tr>
+                                ))}
+                            </tbody>
                         </table>
                     </div>
                     </div>
