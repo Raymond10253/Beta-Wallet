@@ -87,7 +87,7 @@ export default function Withdraw() {
                                 setError('');
                                 setMessage(''); 
                             }}
-                            className="w-full px-2 py-3 rounded-xl"
+                            className="w-full px-2 py-3 rounded-xl uppercase bg-slate-800 text-slate-300 text-xs"
                             required
                         >
                             <option value="">Select method</option>

@@ -108,6 +108,7 @@ if (!isOpen) return null;
                                 name="password"
                                 placeholder="Password"
                                 maxLength={8}
+                                minLength={4}
                                 value={formData.password}
                                 onChange={handleChange}
                                 className="py-1 px-2 w-full rounded-2xl"
@@ -121,6 +122,7 @@ if (!isOpen) return null;
                                 name="confirmPassword"
                                 placeholder="Confirm Password"
                                 maxLength={8}
+                                minLength={4}
                                 value={formData.confirmPassword}
                                 onChange={handleChange}
                                 className="py-1 px-2 w-full rounded-2xl"

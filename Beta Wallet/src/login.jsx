@@ -61,6 +61,7 @@ if(!isOpen) return null;
                             type="password" 
                             required id="password" 
                             maxLength={8}
+                            minLength={4}
                             placeholder="password"
                             name="password"
                             value={userForm.password}
