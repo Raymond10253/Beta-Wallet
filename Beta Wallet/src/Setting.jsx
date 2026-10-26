@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 
-export default function Setting({ userName = 'John Doe' }) {
+export default function Setting({ userName = '' }) {
     const [user, setUser] = useState(userName);
 
     return(
@@ -14,14 +14,11 @@ export default function Setting({ userName = 'John Doe' }) {
                         <span className="text-orange-600 font-bold text-lg">Settings</span>
                     </div>
                     <div className="flex items-center space-x-4">
-                        <div>
-                            <i className="fa-regular fa-bell text-xl text-slate-400"></i>
-                        </div>
                         <div className="h-7 border border-black"></div>
                         <div className="flex items-center space-x-2">
-                            <div className="h-10 w-10 flex items-center justify-center border border-orange-500 text-orange-500 rounded-full font-extrabold text-xs">{user.split(' ').map((part) => part[0]).join('').slice(0, 2).toUpperCase() || 'JD'}</div>
+                            <div className="h-10 w-10 flex items-center justify-center border border-orange-500 text-orange-500 rounded-full font-extrabold text-xs">{userName.split(' ').map((part) => part[0]).join('').slice(0, 2).toUpperCase() || 'JD'}</div>
                             <div>
-                                <span className="text-slate-400 font-medium">{user}</span>
+                                <span className="text-slate-400 font-medium">{userName}</span>
                                 <span className="block text-xs font-extrabold text-orange-500">Premium account</span>
                             </div>
                         </div>
@@ -33,6 +30,9 @@ export default function Setting({ userName = 'John Doe' }) {
                     <div className='grid grid-cols-2'>
                         <div className='border-r border-slate-400 w-full h-full flex items-center justify-center'>
                             <h2 className='text-xl font-bold text-white uppercase'>Settings</h2>
+                            <div>
+
+                            </div>
                         </div>  
                         
                     </div> 

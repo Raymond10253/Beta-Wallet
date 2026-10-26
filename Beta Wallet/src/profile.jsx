@@ -101,7 +101,7 @@ export default function Profile() {
                         </div>
                         <div className='h-7 border border-black'></div>
                         <div className='px-4 flex space-x-3'>
-                                    <div className='h-10 w-10 flex items-center justify-center border border-orange-500 text-orange-500 rounded-full font-extrabold text-xs'>JD</div>
+                                    <div className='h-10 w-10 flex items-center justify-center border border-orange-500 text-orange-500 rounded-full font-extrabold text-xs'>{state.username.split(' ').map((part) => part[0]).join('').slice(0, 2).toUpperCase() || 'JD'}</div>
                                     <div>
                                         <h3 className='font-bold text-slate-400'>{state.username}</h3>
                                         <h4 className='text-xs font-extrabold text-orange-500'>Premium account</h4>

@@ -9,7 +9,7 @@ import {
   ResponsiveContainer,
 } from 'recharts';
 
-export default function Overview({ userName = 'John Doe' }) {
+export default function Overview({ userName = '' }) {
   const [transactionState] = useState(() => {
     try {
       return { transactions: getTransactions(), error: '' };
