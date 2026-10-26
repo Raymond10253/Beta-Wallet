@@ -51,5 +51,5 @@ export function recordWithdrawal(amount, method, paymentDetail) {
     throw error;
   }
 
-  return recordTransaction('withdrawal', amount, method);
+  return recordTransaction('withdrawal', amount, method, paymentDetail);
 }
