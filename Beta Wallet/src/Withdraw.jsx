@@ -13,7 +13,7 @@ export default function Withdraw() {
         bank: { label: 'Bank account number', placeholder: 'Enter bank account number', type: 'text' },
         crypto: { label: 'Wallet address', placeholder: 'Enter cryptocurrency wallet address', type: 'text' },
         paypal: { label: 'PayPal email address', placeholder: 'Enter PayPal email address', type: 'email' },
-        other: { label: 'M-Pesa phone number', placeholder: 'Enter M-Pesa phone number', type: 'tel' },
+        Mpesa: { label: 'M-Pesa phone number', placeholder: 'Enter M-Pesa phone number', type: 'tel' },
     };
     const selectedPaymentField = paymentDetailFields[method];
     const handleSubmit = (event) => {
@@ -94,7 +94,7 @@ export default function Withdraw() {
                             <option value="bank">Bank Transfer</option>
                             <option value="crypto">Cryptocurrency</option>
                             <option value="paypal">PayPal</option>
-                            <option value="other">Mpesa</option>
+                            <option value="Mpesa">Mpesa</option>
                         </select>
                     </div>
                     {selectedPaymentField && (
