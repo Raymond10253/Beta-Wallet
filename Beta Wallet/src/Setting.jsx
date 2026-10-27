@@ -80,9 +80,20 @@ export default function Setting({ userName = '' }) {
               </div>
             </div>
           )}
+          <select name="" id="" onChange={(event) => setActiveTab(event.target.value)} className="w-full bg-slate-900 border border-slate-800 rounded-xl p-3 text-sm text-orange-600 font-semibold">
+            <option value="" className="bg-slate-900 text-slate-100"></option>
+            <option value={activeTab === 'dapps' ? 'dapps' : ''} className="bg-slate-900 text-slate-100">Dapps</option>
+            <option value={activeTab === 'network' ? 'network' : ''} className="bg-slate-900 text-slate-100">Network</option>
+            <option value={activeTab === 'general' ? 'general' : ''} className="bg-slate-900 text-slate-100">General</option>
+          </select>
 
           
-          {activeTab === 'dapps' && (
+           {activeTab === 'dapps' && (
+            <div className="space-y-6">
+              <div>
+                <h2 className="text-lg font-bold text-white">Connected Applications</h2>
+                <p className="text-sm text-slate-400">Manage external dApps and smart contract allowances linked to your wallet.</p>
+              </div>
             <div className="space-y-6">
               <div>
                 <h2 className="text-lg font-bold text-white">Connected Applications</h2>
@@ -104,7 +115,9 @@ export default function Setting({ userName = '' }) {
                 </div>
               </div>
             </div>
-          )}
+            </div>
+
+           )}
 
           
           {activeTab === 'network' && (

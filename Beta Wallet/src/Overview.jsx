@@ -112,7 +112,7 @@ export default function Overview({ userName = '' }) {
                                     <XAxis dataKey="time" stroke="#9ca3af" />
                                     <YAxis stroke="#9ca3af" />
                                     <Tooltip contentStyle={{ backgroundColor: '#111827', borderColor: '#374151' }} />
-                                    <Area type="linear" dataKey="balance" stroke="#f97316" fillOpacity={1} fill="url(#colorBalance)" />
+                                    <Area type="monotone" dataKey="balance" stroke="#f97316" fillOpacity={1} fill="url(#colorBalance)" />
                                     </AreaChart>
                                 </ResponsiveContainer>
                             </div>
