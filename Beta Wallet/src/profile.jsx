@@ -92,7 +92,7 @@ export default function Profile() {
                 <header className='sticky bg-slate-900/70 backdrop-blur-md border-b border-slate-600/60 px-5 py-4 z-30'>
                 <div className='flex justify-between'>
                     <div className='space-x-3'>
-                        <i className='fa-solid fa-circle-user text-orange-500 text-2xl p-4 bg-slate-600/60 rounded-2xl'></i>
+                        <i className='fa-solid fa-circle-user text-orange-600 text-2xl p-4 bg-slate-600/60 rounded-2xl'></i>
                         <span className='uppercase text-slate-400 text-xl font-bold'>Profile</span>
                     </div>
                     <div className='flex flex-col-2'>
