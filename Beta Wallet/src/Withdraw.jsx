@@ -54,7 +54,10 @@ export default function Withdraw() {
     <>
         <div className="relative h-screen w-full">
         <header className="py-4 px-5 sticky bg-slate-900/70 w-full">
-            
+            <div className='space-x-3'>
+                <i className='fa-solid fa-arrow-up text-2xl text-orange-600 bg-slate-600/50 p-4 rounded-2xl'></i>
+                <span className='font-bold text-xl uppercase text-slate-400'>Withdraw</span>
+            </div>
         </header>
         <section className="p-5 max-w-3xl mx-auto border border-black rounded-xl bg-gradient-to-b from-blue-950/50 to-orange-700/50 z-30 shadow shadow-xl my-10">
             <div className="flex justify-between items-center mb-6">

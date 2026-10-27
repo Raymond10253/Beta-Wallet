@@ -59,7 +59,7 @@ export default function Overview({ userName = '' }) {
                         <div className='flex flex-col-3'>
                             <div className='px-4'>
                                 <a href="">
-                                    <i className='fa-regular fa-bell text-xl text-slate-400'></i>
+                                    <i className='fa-regular fa-bell text-xl text-slate-400 hover:scale-110 transition-transform duration-300'></i>
                                 </a>
                             </div>
                             <div className='h-7 border border-black'></div>
@@ -126,32 +126,25 @@ export default function Overview({ userName = '' }) {
 
                 <div>
                     
-                            <div className="flex justify-center items-center space-x-2 px-10 grid grid-cols-3 md:grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-7">
+                            <div className="flex justify-center items-center px-6 grid grid-cols-3 md:grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-5">
                                 <div className='p-5 border border-slate-800 w-full rounded-2xl bg-slate-900/50'>
                                     <h4 className='text-orange-500 font-bold'>Available balance</h4>
                                     <div className='flex justify-between my-2'>
                                         <span className='text-2xl font-bold text-slate-400'>{formatAmount(runningBalance)}</span>
-                                        <span className='p-4 border border-orange-500 rounded-3xl'>
-                                            <i className='fa-solid fa-check text-orange-500'></i>
-                                        </span>
+                                        
                                     </div>
                                 </div>
                                 <div className='p-5 border border-slate-800 w-full rounded-2xl bg-slate-900/50'>
                                     <h4 className='text-orange-500 font-bold'>Pending Processes</h4>
                                     <div className='flex justify-between my-2'>
                                         <span className='text-2xl font-bold text-slate-400'>ksh.0</span>
-                                        <span className='p-4 border border-orange-500 rounded-3xl'>
-                                            <i className='fa-solid fa-hourglass-half text-orange-500'></i>
-                                        </span>
+                                        
                                     </div>
                                 </div>
                                 <div className='p-5 border border-slate-800 w-full rounded-2xl bg-slate-900/50'>
                                     <h4 className='text-orange-500 font-bold'>Transactions</h4>
                                     <div className='flex justify-between my-2'>
                                         <span className='text-2xl font-bold text-slate-400'>{transactions.length}</span>
-                                        <span className='p-4 border border-orange-500 rounded-3xl'>
-                                            <i className='fa-solid fa-list-check text-orange-500'></i>
-                                        </span>
                                     </div>
                                 </div>
                                 
@@ -163,7 +156,7 @@ export default function Overview({ userName = '' }) {
                     <div className='p-5 bg-slate-900/60 rounded-2xl'>
                     <div className='flex justify-between px-2 my-3'>
                         <div className='space-x-3'>
-                            <i class="fa-solid fa-arrow-rotate-left text-orange-500 text-xl"></i>
+                            <i class="fa-solid fa-arrow-rotate-left text-orange-500 text-xl transition-transform duration-300 hover:rotate-180"></i>
                             <span className='font-bold'>Recent Transaction Logs</span>
                         </div>
                         <div>
@@ -196,7 +189,9 @@ export default function Overview({ userName = '' }) {
                                         <td className="p-3 capitalize">
                                             {transaction.method || '—'}
                                             {transaction.paymentDetail && (
-                                                <span className="block text-xs normal-case text-slate-400">{transaction.paymentDetail}</span>
+                                                <span className="block text-xs normal-case text-slate-400">
+                                                    {transaction.paymentDetail}
+                                                </span>
                                             )}
                                         </td>
                                         <td className="p-3">{formatAmount(transaction.amount)}</td>
