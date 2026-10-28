@@ -8,7 +8,7 @@ import Setting from './Setting';
 import Contact from './Contact';
 
 
-export default function NavBar({ userName = 'John Doe' }) {
+export default function NavBar({ userName = '' }) {
 const [activeTab, setActiveTab] = useState('dashboard')
 
 const tabContent = {
