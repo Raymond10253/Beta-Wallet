@@ -1,6 +1,8 @@
 import { useState } from "react";
 
 const Signup = ({ isOpen, onClose, onSignup, onSignIn }) => {
+const [isPasswordVisible, setIsPasswordVisible] = useState(false)
+const [isConfirmPasswordVisible, setIsConfirmPasswordVisible] = useState(false)
 const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -88,31 +90,53 @@ if (!isOpen) return null;
                         
                         <div>
                             <label htmlFor="password" className="block text-md uppercase text-orange-600 my-2">Password</label>
-                            <input 
-                                type="password" 
-                                required id="password" 
-                                name="password"
-                                placeholder="Password"
-                                maxLength={8}
-                                minLength={4}
-                                value={formData.password}
-                                onChange={handleChange}
-                                className="py-1 px-2 w-full rounded-2xl"
-                            />
+                            <div className="relative">
+                                <input 
+                                    type={isPasswordVisible ? "text" : "password"} 
+                                    required id="password" 
+                                    name="password"
+                                    placeholder="Password"
+                                    maxLength={8}
+                                    minLength={4}
+                                    value={formData.password}
+                                    onChange={handleChange}
+                                    className="py-1 px-2 pr-10 w-full rounded-2xl"
+                                />
+                                <button
+                                    type="button"
+                                    onClick={() => setIsPasswordVisible((visible) => !visible)}
+                                    aria-label={isPasswordVisible ? "Hide password" : "Show password"}
+                                    aria-pressed={isPasswordVisible}
+                                    className="absolute inset-y-0 right-3 text-gray-500"
+                                >
+                                    <i className={`fa-solid ${isPasswordVisible ? "fa-eye-slash" : "fa-eye"}`} aria-hidden="true"></i>
+                                </button>
+                            </div>
                         </div>
                         <div>
                             <label htmlFor="confirmPassword" className="block text-md uppercase text-orange-600 my-2">Confirm Password</label>
-                            <input 
-                                type="password" 
-                                required id="confirmPassword"
-                                name="confirmPassword"
-                                placeholder="Confirm Password"
-                                maxLength={8}
-                                minLength={4}
-                                value={formData.confirmPassword}
-                                onChange={handleChange}
-                                className="py-1 px-2 w-full rounded-2xl"
-                            />
+                            <div className="relative">
+                                <input 
+                                    type={isConfirmPasswordVisible ? "text" : "password"} 
+                                    required id="confirmPassword"
+                                    name="confirmPassword"
+                                    placeholder="Confirm Password"
+                                    maxLength={8}
+                                    minLength={4}
+                                    value={formData.confirmPassword}
+                                    onChange={handleChange}
+                                    className="py-1 px-2 pr-10 w-full rounded-2xl"
+                                />
+                                <button
+                                    type="button"
+                                    onClick={() => setIsConfirmPasswordVisible((visible) => !visible)}
+                                    aria-label={isConfirmPasswordVisible ? "Hide confirm password" : "Show confirm password"}
+                                    aria-pressed={isConfirmPasswordVisible}
+                                    className="absolute inset-y-0 right-3 text-gray-500"
+                                >
+                                    <i className={`fa-solid ${isConfirmPasswordVisible ? "fa-eye-slash" : "fa-eye"}`} aria-hidden="true"></i>
+                                </button>
+                            </div>
                         </div>
                        
                         <div className="flex items-center justify-center w-full">

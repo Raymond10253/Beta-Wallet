@@ -80,7 +80,7 @@ function HomePage() {
 
       </header>
       <section id='hero' className="bg-transparent px-4
-        min-h-screen flex items-center justify-center pb-5 overflow-hidden">
+        min-h-screen flex items-center justify-center pb-4 overflow-hidden">
         <div>
           <div className='grid grid-cols-2 md:grid-cols-1 sm:grid-cols-1 lg:grid-cols-2'>
             <div>
