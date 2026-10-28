@@ -25,6 +25,22 @@ function HomePage() {
     setIsLoginOpen(false)
     navigate('/dashboard')
   }
+
+  const handleSignup = (userName) => {
+    localStorage.setItem('betaWalletUserName', userName)
+    setIssigninOpen(false)
+    navigate('/dashboard')
+  }
+
+  const openLogin = () => {
+    setIssigninOpen(false)
+    setIsLoginOpen(true)
+  }
+
+  const openSignup = () => {
+    setIsLoginOpen(false)
+    setIssigninOpen(true)
+  }
   
 
   return (
@@ -291,11 +307,14 @@ function HomePage() {
         <Signup 
           isOpen = {issigninOpen}
           onClose ={() => setIssigninOpen(false)}
+          onSignup={handleSignup}
+          onSignIn={openLogin}
         />
         <Login 
           isOpen = {isLoginOpen}
           onClose ={() => setIsLoginOpen(false)}
           onLogin={handleLogin}
+          onSignUp={openSignup}
         />
       </main>
     </>
