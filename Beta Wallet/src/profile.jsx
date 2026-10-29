@@ -48,12 +48,13 @@ profileForm.addEventListener('submit', (e) => {
 
 import React, { useState, useEffect } from 'react';
 import Login from './login';
+import { getUserStorageKey } from './userStorage.js';
 
-export default function Profile() {
+export default function Profile({ userName = '' }) {
     const [isHidden, setIsHidden] =useState(true);
-  // 1. Initialize state from localStorage or default values
+  const profileStorageKey = getUserStorageKey('savingState', userName);
   const [state, setState] = useState(() => {
-    const saved = localStorage.getItem('savingState');
+    const saved = localStorage.getItem(profileStorageKey);
     return saved ? JSON.parse(saved) : { username: '', email: '', phonenumber: '' };
   });
 
@@ -62,12 +63,10 @@ export default function Profile() {
   const [emailN, setEmailN] = useState('');
   const [phoneN, setPhoneN] = useState('');
 
-  // 3. Sync state changes to localStorage
   useEffect(() => {
-    localStorage.setItem('savingState', JSON.stringify(state));
-  }, [state]);
+    localStorage.setItem(profileStorageKey, JSON.stringify(state));
+  }, [profileStorageKey, state]);
 
-  // 4. Handle form submission cleanly in React
   const handleSubmit = (e) => {
     e.preventDefault();
     if (userN.trim() && emailN.trim() && phoneN.trim()) {

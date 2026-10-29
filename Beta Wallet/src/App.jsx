@@ -5,29 +5,38 @@ import heroImage from 'C:/Users/HomePC/Desktop/My Projects/Bash-Wallet/Beta Wall
 import Login from './login'
 import Signup from './signup'
 import NavBar from './dashboard'
+import { migrateLegacyUserData } from './userStorage.js'
 
 function App() {
+  const [userName, setUserName] = useState(() => {
+    const storedUserName = localStorage.getItem('betaWalletUserName')
+    migrateLegacyUserData(storedUserName)
+    return storedUserName || 'John Doe'
+  })
+
   return (
     <Routes>
-      <Route path='/' element={<HomePage />} />
-      <Route path='/dashboard' element={<NavBar userName={localStorage.getItem('betaWalletUserName') || 'John Doe'} />} />
+      <Route path='/' element={<HomePage onUserNameChange={setUserName} />} />
+      <Route path='/dashboard' element={<NavBar userName={userName} />} />
     </Routes>
   )
 }
 
-function HomePage() {
+function HomePage({ onUserNameChange }) {
   const navigate = useNavigate()
   const [issigninOpen, setIssigninOpen] =useState(false)
   const [isLoginOpen, setIsLoginOpen] =useState(false)
 
   const handleLogin = (userName) => {
     localStorage.setItem('betaWalletUserName', userName)
+    onUserNameChange(userName)
     setIsLoginOpen(false)
     navigate('/dashboard')
   }
 
   const handleSignup = (userName) => {
     localStorage.setItem('betaWalletUserName', userName)
+    onUserNameChange(userName)
     setIssigninOpen(false)
     navigate('/dashboard')
   }

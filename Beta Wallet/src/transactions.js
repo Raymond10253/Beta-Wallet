@@ -1,7 +1,10 @@
+import { getUserStorageKey } from './userStorage.js';
+
 const TRANSACTIONS_STORAGE_KEY = 'walletTransactions';
 
-export function getTransactions() {
-  const storedTransactions = window.localStorage.getItem(TRANSACTIONS_STORAGE_KEY);
+export function getTransactions(userName) {
+  const storageKey = getUserStorageKey(TRANSACTIONS_STORAGE_KEY, userName);
+  const storedTransactions = window.localStorage.getItem(storageKey);
 
   if (storedTransactions === null) {
     return [];
@@ -15,8 +18,8 @@ export function getTransactions() {
   return transactions;
 }
 
-function recordTransaction(type, amount, method, paymentDetail) {
-  const transactions = getTransactions();
+function recordTransaction(type, amount, method, paymentDetail, userName) {
+  const transactions = getTransactions(userName);
   const transaction = {
     id: Date.now(),
     type,
@@ -27,19 +30,19 @@ function recordTransaction(type, amount, method, paymentDetail) {
   };
 
   window.localStorage.setItem(
-    TRANSACTIONS_STORAGE_KEY,
+    getUserStorageKey(TRANSACTIONS_STORAGE_KEY, userName),
     JSON.stringify([...transactions, transaction]),
   );
 
   return transaction;
 }
 
-export function recordDeposit(amount, method, paymentDetail) {
-  return recordTransaction('deposit', amount, method, paymentDetail);
+export function recordDeposit(amount, method, paymentDetail, userName) {
+  return recordTransaction('deposit', amount, method, paymentDetail, userName);
 }
 
-export function recordWithdrawal(amount, method, paymentDetail) {
-  const transactions = getTransactions();
+export function recordWithdrawal(amount, method, userName) {
+  const transactions = getTransactions(userName);
   const balance = transactions.reduce(
     (total, transaction) => total + (transaction.type === 'deposit' ? transaction.amount : -transaction.amount),
     0,
@@ -51,5 +54,5 @@ export function recordWithdrawal(amount, method, paymentDetail) {
     throw error;
   }
 
-  return recordTransaction('withdrawal', amount, method, paymentDetail);
+  return recordTransaction('withdrawal', amount, method, undefined, userName);
 }

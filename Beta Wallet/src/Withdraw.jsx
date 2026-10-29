@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { recordWithdrawal } from './transactions';
 
-export default function Withdraw() {
+export default function Withdraw({ userName }) {
     const [amount, setAmount] = useState('');
     const [method, setMethod] = useState('');
    // const [account, setAccount] = useState('');
@@ -33,7 +33,7 @@ export default function Withdraw() {
         }
 
         try {
-            recordWithdrawal(parsedAmount, method);
+            recordWithdrawal(parsedAmount, method, userName);
             setAmount('');
             setMethod('');
             setPaymentDetail('');

@@ -12,7 +12,7 @@ import {
 export default function Overview({ userName = '' }) {
   const [transactionState] = useState(() => {
     try {
-      return { transactions: getTransactions(), error: '' };
+      return { transactions: getTransactions(userName), error: '' };
     } catch (error) {
       console.error('Unable to load transactions:', error);
       return { transactions: [], error: 'Unable to load transaction history.' };

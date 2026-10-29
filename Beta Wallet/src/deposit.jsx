@@ -2,7 +2,7 @@ import { useState } from "react";
 import { recordDeposit } from './transactions';
 
 
-export default function Deposit() {
+export default function Deposit({ userName }) {
   const [amount, setAmount] = useState('');
   const [method, setMethod] = useState('');
   const [paymentDetail, setPaymentDetail] = useState('');
@@ -34,7 +34,7 @@ export default function Deposit() {
     }
 
     try {
-      recordDeposit(parsedAmount, method, paymentDetail.trim());
+      recordDeposit(parsedAmount, method, paymentDetail.trim(), userName);
       setAmount('');
       setMethod('');
       setPaymentDetail('');
