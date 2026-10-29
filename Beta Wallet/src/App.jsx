@@ -111,7 +111,7 @@ function HomePage({ onUserNameChange }) {
             
           </div>
           <div className='flex justify-between mt-16'>
-              <div className='grid grid-cols-2 md:grid-cols-1 sm:grid-cols-1 lg:grid-cols-2 gap-2'>
+              <div className='flex space-x-4'>
                 <div>
                   <h3 className='text-lg text-orange-500 font-extrabold'>01</h3>
                   <h4 className='font-bold text-orange-500'>Financial Transaction</h4>
