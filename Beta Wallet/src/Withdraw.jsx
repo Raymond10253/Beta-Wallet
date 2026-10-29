@@ -61,7 +61,7 @@ export default function Withdraw({ userName }) {
         </header>
         <section className="p-5 max-w-3xl mx-auto border border-black rounded-xl bg-gradient-to-b from-blue-950/50 to-orange-700/50 z-30 shadow shadow-xl my-10">
             <div className="flex justify-between items-center mb-6">
-                <h2 className="text-2xl font-semibold text-transparent bg-clip-text bg-gradient-to-br from-orange-600 via-blue-300 to-indigo-700 uppercase">Withdraw</h2>
+                <h2 className="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-br from-orange-600 via-blue-300 to-indigo-700 uppercase">Withdraw</h2>
             </div>
             <div>
                 <form onSubmit={handleSubmit} className="space-y-4">
