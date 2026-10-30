@@ -1,6 +1,5 @@
 import { useState } from "react";
 
-
 function Login({ isOpen, onClose, onLogin, onSignUp }) {
     const [userForm, setUserForm] = useState({
         userName: '',
@@ -84,15 +83,14 @@ if(!isOpen) return null;
                             <button type="submit" className="bg-orange-600 hover:bg-orange-700 w-full uppercase font-medium rounded-2xl py-1">Log In</button>
                         </div>
                         <div className="flex items-center justify-center">
-                            <p>Don't have an account? <a href="#" onClick={(event) => { event.preventDefault(); onSignUp(); }} className="text-orange-500">Sign up</a></p>                        </div>
+                            <p>Don't have an account? <a href="#" onClick={(event) => { event.preventDefault(); onSignUp(); }} className="text-orange-500">Sign up</a></p>                        
+                        </div>
                     </form> 
                     
                     </div>
                     
                 </div>
             </div>
-            
-            
         </>
     )
 }
